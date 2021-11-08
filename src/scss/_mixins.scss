@@ -1,0 +1,14 @@
+$mediaBreakpoints:(
+    
+    "tablet":"only screen and (min-width:688px)", 
+    "laptop":"only screen and (min-width:992px)", 
+    "desktop":"only screen and (min-width:1312px)"
+);
+
+@mixin mediaBreakpoint($breakpoint){
+    
+    @media #{map-get($mediaBreakpoints, $breakpoint)} {
+        @content;
+    }
+
+}

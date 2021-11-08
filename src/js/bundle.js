@@ -1,0 +1,1 @@
+window.IntersectionObserver&&[...document.querySelectorAll(".jobPosition")].forEach(e=>e.classList.remove("offScreen")),document.querySelectorAll(".jobPosition").forEach(e=>{observer.observe(e)});let observer=new IntersectionObserver((e,o)=>{e.forEach(e=>{e.target.classList.remove("offScreen")})},{rootMargin:"0px 0px -200px 0px"});

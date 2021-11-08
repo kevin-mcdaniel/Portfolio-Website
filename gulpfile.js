@@ -7,7 +7,7 @@ const minify = require('gulp-minify');
 const del = require('del')
 
 //To bundle the css in a specific order:
-//const cssFiles = ['./src/css/FILE1.CSS', './src/css/FILE2.CSS']
+const cssFiles = ['./src/css/style.css']
 
 
 //compile scss into css
@@ -24,10 +24,11 @@ function compileSass() {
 
 const bundleCss = () => {
     //To bundle the css in a specific order:
-    //return src(cssFiles)
-    return src('./src/css/**/*.css', { allowEmpty: true })
+    return src(cssFiles, { allowEmpty: true })
+    //return src('./src/css/**/*.css', { allowEmpty: true })
     .pipe(minifyCss())
     .pipe(concat('bundle.css'))
+    .pipe(dest('./src/css/'))
     .pipe(dest('./dist/css/'))
 
     
@@ -38,12 +39,18 @@ const bundleJs = () => {
         .pipe(minify({noSource: true}))
         .pipe(concat('bundle.js'))
         .pipe(dest('./dist/js'))
+        .pipe(dest('./src/js'))
 }
 
 
 const htmlDist = () => {
     return src('./src/**/*.html', { allowEmpty: true })
     .pipe(dest('./dist'))
+}
+
+const imgDist = () => {
+    return src('./src/img/**/*.*', { allowEmpty: true })
+    .pipe(dest('./dist/img'))
 }
 
 const cssDist = () => {
@@ -67,7 +74,7 @@ function start() {
         }
     });
 
-    watch('./src/scss**/*.scss', series(style, bundleCss));
+    watch('./src/scss**/*.scss', series(compileSass, bundleCss));
     watch('./src/*.html').on('change', browserSync.reload);
     watch('./src/js**/*.js').on('change', series(bundleJs, browserSync.reload));
    
@@ -81,12 +88,13 @@ exports.bundleCss = bundleCss;
 exports.bundleJs = bundleJs;
 exports.htmlDist = htmlDist;
 exports.jsDist = jsDist;
+exports.imgDist = imgDist;
 exports.cssDist = cssDist;
 exports.cleanDist = cleanDist;
 exports.compileSass = compileSass;
 exports.start = start;
 exports.bundle = parallel(bundleCss, bundleJs)
-exports.build = series(compileSass, bundleCss, bundleJs, htmlDist, cssDist, jsDist)
+exports.build = series(cleanDist, compileSass, bundleCss, bundleJs, htmlDist, cssDist, jsDist, imgDist)
 
 
 
