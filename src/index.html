@@ -1,51 +1,79 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Welcome</title>
         <link href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
-        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./css/bundle.css" />
     </head>
     <body>
         <header>
             <div class="content">
                 <div class="brand">Kevin McDaniel</div>
 
-                <nav class="about">
-                    <div class="about">About</div>
-                    <div class="work">Work</div>
-                    <div class="skillset">Skillset</div>
-                    <div class="hobbies">Hobbies</div>
-                    <div class="contact">Contact</div>
+                <nav class="navAbout">
+                    <div class="navAbout">About</div>
+                    <div class="navWork">Work</div>
+                    <div class="navHobbies">Hobbies</div>
+                    <div class="navContact">Contact</div>
                 </nav>
             </div>
         </header>
-        <section class="intro reverseBlock" data-sectionClass="about">
+        <section class="intro reverseBlock" data-sectionClass="navAbout">
             <div class="content">
-                <div class="bioPic">
-                    <div>
+                <div class="bioContact">
+                    <div class="avatar">
                         <img src="./img/portfolio/profilepic.jpg">
                     </div>
                     <div class="picText">
                     <strong>Hi, I'm Kevin McDaniel</strong>
                     <div>Web Designer/Developer/Guy</div>
                     <div class="socialLinks">
-                        <div class="im im-mail"></div>
-                        <div class="im im-github"></div>
-                        <div class="im im-linkedin"></div>
-                        <div class="im im-youtube"></div>
+                        <a href="mailto:kevinpmcdaniel@gmail.com"  class="im im-mail" aria-label="Email Me"></a>
+                        <a href="https://github.com/kevin-mcdaniel" class="im im-github" aria-label="View my GitHub"></a>
+                        <a href="https://www.linkedin.com/in/kevinpmcdaniel/" class="im im-linkedin" aria-label="Visit me on LinkedIn"></a>
+                        <a href="https://www.youtube.com/c/hikingrogue" class="im im-youtube" aria-label="Visit me on Youtube"></a>
                     </div>
                     </div>
                 </div>
-                <div class="bioText">
-                    <strong>I Do Web Stuff!</strong>
-                    <p>That's right, all kinds of web stuff. I know that sounds a bit vague, but I've been designing and developing web content for the last 17 years and I've worn many hats as the need arises. What you get with me is a professional front end developer with a good understanding of design and UI/UX principles and familiarity with the back end. I am adaptable and self sufficient, looking to figure out solutions myself if help is not available.  Aside from work, I'm an outdoor enthusiast who likes to spend as much time as possible exploring new and exciting places on foot or on wheels.</p>
+                <div class="skillset">
+                    <strong class="headline">I Do Web Stuff!</strong>
+                    <div>
+                        <div class="skills">
+                            <div class="skillIcon">
+                                <object type="image/svg+xml" data="img/portfolio/design.svg" class="icon"></object>
+                                <div>
+                                    <strong>DESIGN</strong>
+                                    <p>Minimalist, clear design for an intuitive UI and experience.</p>
+                                </div>
+                            </div>
+                            <div class="skillIcon">
+                                <object type="image/svg+xml" data="img/portfolio/frontend.svg" class="icon"></object>
+                                <div>
+                                    <strong>FRONT END DEVELOPMENT</strong>
+                                    <p>Responsive design, designing around large amounts of data and efficient, easy to maintain code</p>
+                                </div>
+                            </div>
+                            
+                            <div class="skillIcon">
+                                <object type="image/svg+xml" data="img/portfolio/backend.svg" class="icon"></object>
+                                <div>
+                                    <strong>BACK END DEVELOPMENT</strong>
+                                    <p>Experience dealing with large amounts of data and complex tables as well as being able to troubleshoot issues with .NET code</p>
+                                </div>
+                            </div>
+        
+                        </div>
+                    </div>
                 </div>
             </div>
             
+            
         </section>
         <section class="jobs" data-sectionClass="navWork">
-
+            <div class="transitionDown"></div>
             <div class="jobPosition lithia fadeIn slideIn fromRight">
                 
                     <div class="jobHeader lithia">
@@ -63,6 +91,19 @@
                                 <p>Lithia Motors, Inc. is one of the nation’s fastest-growing automotive retailers listed on the Fortune 500 (NYSE: LAD) with over 250 dealerships. As a web developer I worked on internal applications including the Performance Dashboard, an analytics tool used to measure store performance across all dealerships.</p>
                                 <div class="skillGraph">
                                 <div class="entity">
+                                    <div class="topic">Javascript</div>
+                                    <div class="rank l50"><div class="bar100"><div class="label">Daily</div></div></div>
+                                </div>
+                
+                                <div class="entity">
+                                    <div class="topic">jQuery</div>
+                                    <div class="rank"><div class="bar100"><div class="label">Daily</div></div></div>
+                                </div>
+                                <div class="entity">
+                                    <div class="topic">SQL Server</div>
+                                    <div class="rank"><div class="bar100"><div class="label">Daily</div></div></div>
+                                </div>
+                                <div class="entity">
                                     <div class="topic">HTML</div>
                                     <div class="rank"><div class="bar50"><div class="label">Occasionally</div></div></div>
                                 </div>
@@ -72,25 +113,14 @@
                                     <div class="rank"><div class="bar50"><div class="label">Occasionally</div></div></div>
                                 </div>
                 
-                                <div class="entity">
-                                    <div class="topic">Javascript</div>
-                                    <div class="rank l50"><div class="bar100"><div class="label">Daily</div></div></div>
-                                </div>
-                
-                                <div class="entity">
-                                    <div class="topic">jQuery</div>
-                                    <div class="rank"><div class="bar100"><div class="label">Daily</div></div></div>
-                                </div>
+                               
 
                                 <div class="entity">
                                     <div class="topic">.NET Core</div>
                                     <div class="rank"><div class="bar50"><div class="label">Occasionally</div></div></div>
                                 </div>
 
-                                <div class="entity">
-                                    <div class="topic">SQL Server</div>
-                                    <div class="rank"><div class="bar100"><div class="label">Daily</div></div></div>
-                                </div>
+                                
                                 <div class="entity">
                                     <div class="topic">MDX</div>
                                     <div class="rank"><div class="bar25"><div class="label">Rarely</div></div></div>
@@ -112,8 +142,10 @@
                             <li>Visual Studio</li>
                             <li>.NET Core</li>
                             <li>.NET Web API</li>
-                            <li>TFS VS/Git</li>
+                            <li>Git/TFS VS</li>
                             <li>Azure Dev Ops</li>
+                            <li>Microsoft Teams</li>
+                            <li>Agile Development</li>
                         </ul>
                         <a class="button cta" href="https://lithiamotors.com/">Visit Site</a>
                     </div>  
@@ -174,7 +206,7 @@
                         <li>Javascript</li>
                         <li>jQuery</li>
                         <li>Visual Studio</li>
-                        <li>TFS VS/Git</li>
+                        <li>Git/TFS VS</li>
                     </ul>
                     <a class="button cta" href="https://buyautoparts.com/">Visit Site</a>
                 </div>
@@ -184,7 +216,7 @@
             <div class="jobPosition ms fadeIn slideIn fromRight">
                 
                 <div class="jobHeader motorcycle">
-                    <h1>Motorcycle Superstore (J&P Cycles)<span>2011-2015</span></h1>
+                    <h1>Motorcycle Superstore<span>2011-2015</span></h1>
                     
                 </div>
                 
@@ -215,12 +247,12 @@
                             </div>
 
                             <div class="entity">
-                                <div class="topic">Optimizely(A/B Testing)</div>
+                                <div class="topic">A/B Testing</div>
                                 <div class="rank"><div class="bar50"><div class="label">Occasionally</div></div></div>
                             </div>
 
                             <div class="entity">
-                                <div class="topic">Web Trends(Analytics)</div>
+                                <div class="topic">Analytics</div>
                                 <div class="rank"><div class="bar50"><div class="label">Occasionally</div></div></div>
                             </div>
                         </div>
@@ -231,6 +263,7 @@
                         <li>HTML</li>
                         <li>CSS</li>
                         <li>Adobe Photoshop</li>
+                        <li>Balsamiq</li>
                         <li>Adobe Illustrator</li>
                         <li>Responsive Design</li>
                         <li>Optimizely</li>
@@ -239,10 +272,12 @@
                         <li>Javascript</li>
                         <li>jQuery</li>
                         <li>SQL Server</li>
-                        <li>TFS VS/Git</li>
+                        <li>Git/TFS VS</li>
+                        <li>Agile Development</li>
+                        <li>Jira</li>
                         <li>Visual Studio</li>
                     </ul>
-                    <a class="button cta" href="http://www.motorcycle-superstore.com/">Visit Site</a>
+                    <a class="button cta" href="https://www.motorcycle-superstore.com/">Visit Site</a>
                 </div>
                 
             
@@ -251,7 +286,7 @@
             <div class="jobPosition fmg fadeIn slideIn fromLeft">
 
                     <div class="jobHeader fmg">
-                        <h1>Fire Mountain Gems and Beads<span>2004-2011</span></h1>
+                        <h1>Fire Mountain Gems<span>2004-2011</span></h1>
                         
                     </div>
                     
@@ -304,78 +339,87 @@
                     </div>
 
             
-        </div>
-        </section>
-        <section class="skillset" data-sectionClass="navSkillset">
-            <!-- <div class="skillGraph">
-                <div class="entity">
-                    <div class="topic">HTML</div>
-                    <div class="rank l50"><div class="label">Expert</div></div>
-                </div>
-
-                <div class="entity">
-                    <div class="topic">CSS</div>
-                    <div class="rank l50"><div class="label">Expert</div></div>
-                </div>
-
-                <div class="entity">
-                    <div class="topic">Javascript</div>
-                    <div class="rank l50"><div class="label"></div>Intermediate</div>
-                </div>
-
-                <div class="entity">
-                    <div class="topic">jQuery</div>
-                    <div class="rank l50"><div class="label"></div>Intermediate</div>
-                </div>
-
-                <div class="entity">
-                    <div class="topic">React</div>
-                    <div class="rank l25"><div class="label"></div>Beginner</div>
-                </div>
-
-                <div class="entity">
-                    <div class="topic">SQL Server</div>
-                    <div class="rank l50"><div class="label"></div>Intermediate</div>
-                </div>
-
-                </div> -->
-                <div class="content">
-                    <div class="skillIcon">
-                        <div class="im im-pencil"></div>
-                        <strong>DESIGN</strong>
-                    </div>
-                    <div class="skillIcon">
-                        <div class="im im-monitor-o"></div>
-                        <strong>FRONT END DEVELOPMENT</strong>
-                    </div>
-                    <div class="skillIcon">
-                        <div class="im im-users"></div>
-                        <strong>UX/USER TESTING</strong>
-                    </div>
-                    <div class="skillIcon">
-                        <div class="im im-database"></div>
-                        <strong>BACK END DEVELOPMENT</strong>
-                    </div>
-
-                </div>
             </div>
+
+            <div class="jobPosition fadeIn slideIn fromRight design">
+                
+                <div class="jobHeader">
+                    <h1>Design Work</h1>
+                    
+                </div>
+                
+                <div class="designContent">
+                    <div class="entry">
+                        <div class="main">
+                            <img src="img/portfolio/wcLogo.png" />
+                            <p>Wee Chickadee Wool Company was established in 2013 by my wife. She sells hand-dyed yarn and fiber. I designed her logo and am currently in the process of doing the theming for her upcoming big cartel website.</p>
+                            
+                        </div>
+                        <div class="jobFooter">
+                            <ul class="tagList" >
+                                <li>Adobe Photoshop</li>
+                                <li>Adobe Illustrator</li>
+                            </ul>
+                            <a class="button cta" href="http://weechickadee.com/">Visit Site</a>
+                        </div>
+                    </div>
+                    
+                    <div class="entry">
+                        <div class="main">
+                            <img src="img/portfolio/hrLogo.png" />
+                            <p>Hiking Rogue is my YouTube presence and I have been creating videos of my hiking adventures since 2019. I hope one day to devote more time to the channel and see it grow. I am in the process of teaching myself how to create a wordpress template from scratch as well as learning some basics about PHP</p>
+                            
+                        </div>
+                        <div class="jobFooter">
+                            <ul class="tagList" >
+                                <li>Davinci Resolve</li>
+                                <li>Adobe Photoshop</li>
+                                <li>Adobe Illustrator</li>
+                                <li>Wordpress</li>
+                                <li>PHP</li>
+                            </ul>
+                            <a class="button cta" href="https://www.hikingrogue.com/">Visit Site</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+            
+            </div>
+        <div class="transitionUp"></div>
         </section>
-        <section class=" hobbies reverseBlock" data-sectionclass="hobbies">
+        
+        
+        <section class="hobbies reverseBlock" data-sectionclass="navHobbies">
             <div class="content">
-                <div class="heroImage">
-                    <strong>Other Stuff I Do...</strong>
-                    <p>I'm an avid backpacker, and in 2019 I hiked over 2000 miles on the Pacific Crest Trail and in 2021 I hiked all 486 miles of the Colorado Trail. I also do weekend excursions and day hikes on a regular basis. I have taken to documenting my adventures on Youtube.</p>
-                    <p>Working on my channel has fueled my interest in both video editing and filmmaking. While I don't spend a lot of time on it, I hope to someday grow my channel into something that might become more of a full time gig. For now I content myself with it just being a hobby.</p>
-                    <p>A lot of my working career has revolved around motorsports and the automotive industry so as you can imagine, I have lots of intrests in that regard. Overlanding seems a logical offshoot of my interest in camping and backpacking so I am in the process of modifying my 2006 subaru outback into a more capable trail vehicle. I'm hoping at some point in the near future to participate in the Gambler 500.</p>
+                <div class="hobbyImg">
+                    <img src="./img/portfolio/pct25.jpg" alt="Northern Terminus of the PCT " />
+                </div>
+                <div class="hobbyText">
+                    <strong>Other Stuff I Do</strong>
+                    <p>I'm an avid backpacker, and in 2019 I hiked over 2000 miles on the Pacific Crest Trail and in 2021 I hiked all 486 miles of the Colorado Trail. I also do weekend excursions and day hikes all over Oregon on a regular basis. I spend so much time outdoors that I have taken to documenting my adventures on Youtube.</p>
+                    <p>Working on my channel has fueled my interest in both video editing and filmmaking. While I don't spend a lot of time on it, I hope to someday grow my channel into something that might become more of a full time gig. For now I content myself with it just being a hobby. </p>
+                    <p>A lot of my working career has revolved around motorsports and the automotive industry so as you can imagine, I have lots of intrests in that regard. Overlanding seems a logical offshoot of my interest in camping and backpacking so I am in the process of modifying my 2006 Subaru Outback into a more capable trail vehicle. I'm hoping at some point in the near future to participate in the Gambler 500.</p>
+                    <p>Lastly, I'm a big gamer of all kinds. I enjoy tabletop, card, roleplaying and video games. I enjoy reading, playing guitar and am even a pretty good cook. I actually have so many hobbies that I sometimes have a hard time focusing.</p>
                 </div>
             </div>
+            
         </section>
-        <section class="contact" data-sectionclass="contact" >
-            <form action="" >
-                <input type="hidden" id="hpHidden" value="" />
-                <input type="email" id="contactEmail" />
-                <textarea id="contactMessage"></textarea>
-            </form>
+        <section class="contact" data-sectionclass="navContact" >
+            <div class="transitionDown"></div>
+            
+            <div class="content">
+                <h2>Contact</h2>
+                <!-- https://formspree.io/forms/mvodeokj/integration -->
+                <form action="https://formspree.io/f/mvodeokj" method="POST" >
+                    <input type="hidden" id="hpHidden" value="" />
+                    <input type="email" id="contactEmail" aria-placeholder="Email" placeholder="Email" />
+                    <input type="text" id="contactName" aria-placeholder="Name" placeholder="Name" />
+                    <textarea id="contactMessage" aria-placeholder="Message" placeholder="Message"></textarea>
+                    <button class="button cta">Submit</button>
+                </form>
+            </div>
         </section>
         
         
@@ -397,7 +441,7 @@
                     }
                 })
             }, 
-            {});
+            {threshold:0.2});
             sections.forEach(section => {
                 navObserver.observe(section);
             })
@@ -411,6 +455,7 @@
                         return;
                     } else {
                         entry.target.classList.add("appear")
+                        console.log(entry.target);
                         appearOnScroll.unobserve(entry.target);
                     }
                 });

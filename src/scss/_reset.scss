@@ -349,3 +349,7 @@
   [hidden] {
     display: none;
   }
+
+  div,section,main,p{
+    box-sizing: border-box;
+  }

@@ -337,6 +337,10 @@ template {
   display: none;
 }
 
+div, section, main, p {
+  box-sizing: border-box;
+}
+
 /* 
   ~~~-------------------------------------------------------------------------------------------------------------------
   SCSS VARIABLES
@@ -350,7 +354,7 @@ template {
 body {
   font: 100% "Cabin", Sans-Serif;
   color: #303030;
-  background: #ECE5CF;
+  background: #1E4158;
 }
 
 /*
@@ -360,7 +364,7 @@ MQ Mixin
   background: red;
 }; */
 h1 {
-  font: 2em "Roboto Condensed", Helvetica, sans-serif;
+  font: 2.5em "Roboto Condensed", Helvetica, sans-serif;
   font-weight: bold;
 }
 
@@ -369,18 +373,38 @@ h1 {
   GENERIC ELEMENTS
   ----------------------------------------------------------------------------------------------------------------------
 */
-.test {
-  display: block;
+.hexagon {
+  position: relative;
+  width: 300px;
+  height: 173.21px;
+  background-color: #64C7CC;
+  margin: 86.6px 0;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 86.6px solid #64C7CC;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 86.6px solid #64C7CC;
 }
 
 .content {
-  padding: 0 10px;
-}
-@media only screen and (min-width:688px) {
-  .content {
-    width: 90vw;
-    padding: 0;
-  }
+  width: calc(100% - 3rem);
+  max-width: 1200px;
+  margin: 0 1.5rem;
 }
 
 .button {
@@ -401,6 +425,20 @@ h1 {
   color: #F7FCFF;
 }
 
+.transitionDown {
+  width: 60%;
+  border-top: 4vh solid #303030;
+  border-left: 17vw solid transparent;
+  border-right: 17vw solid transparent;
+}
+
+.transitionUp {
+  width: 60%;
+  border-bottom: 4vh solid #303030;
+  border-left: 17vw solid transparent;
+  border-right: 17vw solid transparent;
+}
+
 /* 
   ~~~-------------------------------------------------------------------------------------------------------------------
   JS Scroll Animation Classes
@@ -418,10 +456,20 @@ h1 {
   transition: transform 1s, opacity 1s ease-in;
 }
 .slideIn.fromLeft {
-  transform: translateX(-100%);
+  transform: translateX(-90%);
+}
+@media only screen and (min-width:992px) {
+  .slideIn.fromLeft {
+    transform: translateX(-100%);
+  }
 }
 .slideIn.fromRight {
-  transform: translateX(100%);
+  transform: translateX(90%);
+}
+@media only screen and (min-width:992px) {
+  .slideIn.fromRight {
+    transform: translateX(100%);
+  }
 }
 .slideIn.appear {
   transform: translateX(0%);
@@ -435,7 +483,7 @@ h1 {
 header {
   background: #2D6284;
   color: #fff;
-  width: 100vw;
+  width: 100%;
   position: fixed;
   z-index: 1000;
 }
@@ -494,72 +542,140 @@ header nav {
 .intro {
   padding-top: 50px;
   min-height: 100vh;
-  /*   
-    padding: 15px;
+}
+@media only screen and (min-width:992px) {
+  .intro {
+    padding-top: 0;
     display: flex;
-    align-items: center; */
-}
-.intro .picText strong {
-  font-size: 1.5em;
-  margin: 10px 0;
-}
-.intro .picText .socialLinks {
-  margin: 10px 0;
-  display: flex;
-  justify-content: space-between;
-}
-.intro .picText .socialLinks div {
-  font-size: 1.8em;
-}
-.intro .picText .socialLinks div:hover {
-  font-size: 2em;
-  color: #ECE5CF;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+  }
 }
 .intro .content {
   display: flex;
   flex-direction: column;
 }
-@media only screen and (min-width:1312px) {
+@media only screen and (min-width:992px) {
   .intro .content {
+    width: calc(100% - 3rem);
+    max-width: 1200px;
     flex-direction: row;
     align-items: center;
   }
 }
-.intro .bioPic {
+.intro .bioContact {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-@media only screen and (min-width:1312px) {
-  .intro .bioPic {
-    width: 25vw;
+@media only screen and (min-width:992px) {
+  .intro .bioContact {
+    align-items: flex-start;
     flex-direction: column;
+    width: 25%;
+    padding-right: 1.5rem;
   }
 }
-.intro .bioPic img {
+.intro .bioContact .avatar {
+  width: 25%;
+}
+@media only screen and (min-width:992px) {
+  .intro .bioContact .avatar {
+    width: 100%;
+    display: flex;
+  }
+}
+.intro .bioContact .avatar img {
   border-radius: 50%;
+  width: 100%;
+  max-width: 200px;
 }
-.intro .bioText {
-  margin-top: 30px;
+.intro .bioContact .picText {
+  width: calc(75% - 1.5rem);
+  padding-left: 1.5rem;
 }
-.intro .bioText strong {
-  font: 3.5em "Roboto Condensed", Helvetica, sans-serif;
+@media only screen and (min-width:992px) {
+  .intro .bioContact .picText {
+    padding-left: 0;
+    width: 100%;
+  }
+}
+.intro .bioContact .picText strong {
+  font-size: 5.2vw;
+  margin: 10px 0;
+}
+@media only screen and (min-width:992px) {
+  .intro .bioContact .picText strong {
+    font-size: 1.3rem;
+    display: block;
+    text-align: center;
+  }
+}
+.intro .bioContact .picText .socialLinks {
+  margin: 10px 0;
+  display: flex;
+}
+.intro .bioContact .picText .socialLinks a {
+  font-size: 1.8em;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+.intro .bioContact .picText .socialLinks a:not(:first-child) {
+  padding-left: 1.5rem;
+}
+.intro .bioContact .picText .socialLinks a:hover {
+  font-size: 2em;
+  color: #ECE5CF;
+}
+@media only screen and (min-width:688px) {
+  .intro .skillset {
+    width: 75%;
+  }
+}
+.intro .skillset .headline {
+  font: 3.6em "Roboto Condensed", Helvetica, sans-serif;
   text-align: center;
+  padding: 1.5rem 0;
   display: block;
 }
-.intro .bioText p {
-  font-size: 1.5em;
+.intro .skillset .skills {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
-@media only screen and (min-width:1312px) {
-  .intro .bioText {
-    width: 65vw;
+@media only screen and (min-width:688px) {
+  .intro .skillset .skills {
+    flex-direction: row;
+    justify-content: space-between;
   }
-  .intro .bioText strong {
-    text-align: left;
-    font: 8em "Roboto Condensed", Helvetica, sans-serif;
+}
+.intro .skillset .skillIcon {
+  display: flex;
+  flex-direction: row;
+}
+@media only screen and (min-width:688px) {
+  .intro .skillset .skillIcon {
+    flex-direction: column;
+    width: calc(33% - 1.5rem);
+    align-items: center;
   }
-  .intro .bioText p {
-    font-size: 2em;
+  .intro .skillset .skillIcon strong {
+    display: block;
+    text-align: center;
+  }
+}
+.intro .skillset .skillIcon .icon {
+  max-width: 75px;
+  padding-right: 1.5rem;
+}
+@media only screen and (min-width:688px) {
+  .intro .skillset .skillIcon .icon {
+    max-width: 150px;
+    padding: 0;
   }
 }
 
@@ -577,19 +693,15 @@ header nav {
 
 .jobPosition {
   background: #fff;
-  box-shadow: #ccc 3px 3px 3px;
+  box-shadow: #303030 3px 3px 3px;
   border: 1px solid #ddd;
-  padding: 10px;
+  width: 100%;
+  padding: 1.5rem;
   margin: 25px 0;
-}
-@media only screen and (min-width:688px) {
-  .jobPosition {
-    width: 95vw;
-  }
 }
 @media only screen and (min-width:1312px) {
   .jobPosition {
-    width: 90vw;
+    max-width: 1200px;
   }
 }
 .jobPosition .jobContent {
@@ -602,21 +714,15 @@ header nav {
     flex-wrap: nowrap;
   }
 }
-.jobPosition .button {
-  opacity: 0;
-  transition: opacity 250ms ease-in;
-}
-.jobPosition:hover .button {
-  opacity: 1;
-}
 .jobPosition .wrapper {
   position: relative;
   z-index: 10;
 }
 .jobPosition img {
-  max-width: 773px;
+  max-width: 700px;
   width: 100%;
   align-self: center;
+  padding-right: 1.5rem;
 }
 @media only screen and (min-width:1312px) {
   .jobPosition .jobDesc {
@@ -638,8 +744,8 @@ header nav {
   }
 }
 .jobPosition .jobHeader h1 {
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
+  font-size: 2rem;
   background-position: top right;
   background-repeat: no-repeat;
   margin: 10px 0;
@@ -647,62 +753,87 @@ header nav {
 }
 @media only screen and (min-width:688px) {
   .jobPosition .jobHeader h1 {
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
     display: block;
     min-height: 115px;
   }
 }
 .jobPosition .jobHeader h1 span {
+  display: block;
   font-size: 0.65em;
-}
-@media only screen and (min-width:688px) {
-  .jobPosition .jobHeader h1 span {
-    display: block;
-  }
 }
 .jobPosition .jobFooter {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
-.jobPosition .tagList {
+@media only screen and (min-width:688px) {
+  .jobPosition .jobFooter {
+    flex-direction: row;
+  }
+}
+.jobPosition .jobFooter .tagList {
   list-style-type: none;
   display: flex;
   padding-left: 0;
   flex-wrap: wrap;
-  width: 75%;
+  width: 100%;
 }
-.jobPosition .tagList li {
+@media only screen and (min-width:688px) {
+  .jobPosition .jobFooter .tagList {
+    width: 75%;
+  }
+}
+.jobPosition .jobFooter .tagList li {
   margin: 1px 5px;
   border: 1px solid;
   border-radius: 3px;
   padding: 1px 3px;
 }
-
-/* 
-  ~~~-------------------------------------------------------------------------------------------------------------------
-  Skillset
-  ----------------------------------------------------------------------------------------------------------------------
-*/
-.skillset .content {
-  display: flex;
-  justify-content: space-between;
+.jobPosition .button {
+  opacity: 1;
+  width: 100%;
+  text-align: center;
   padding: 20px 0;
 }
-.skillset .skillIcon {
-  min-height: 100px;
-  border: 1px solid;
+.jobPosition.design:hover .button {
+  opacity: 0;
+}
+@media only screen and (min-width:688px) {
+  .jobPosition .button {
+    opacity: 0;
+    transition: opacity 250ms ease-in;
+    width: 15%;
+    padding: 10px 0;
+  }
+  .jobPosition:hover .button {
+    opacity: 1;
+  }
 }
 
-/* 
-  ~~~-------------------------------------------------------------------------------------------------------------------
-  Hobbies
-  ----------------------------------------------------------------------------------------------------------------------
-*/
-.hobbies p {
-  font-size: 1.3em;
+.designContent {
+  display: block;
 }
-.hobbies strong {
-  font-size: 2em;
+.designContent .entry {
+  margin: 25px 0;
+}
+@media only screen and (min-width:688px) {
+  .designContent .entry .main {
+    display: flex;
+    align-items: center;
+  }
+}
+@media only screen and (min-width:688px) {
+  .designContent .entry:hover .button {
+    opacity: 1;
+  }
+}
+.designContent .entry .jobFooter {
+  width: 100%;
 }
 
 .skillGraph .entity {
@@ -714,12 +845,13 @@ header nav {
   font-weight: bold;
   border-right: 1px solid;
   text-align: center;
-  padding: 10px 5px;
+  padding: 5px;
   background-color: #fff;
-  width: 50%;
+  width: 25%;
+  max-width: 100px;
 }
 .skillGraph .entity .rank {
-  width: 80%;
+  flex-grow: 2;
   position: relative;
 }
 .skillGraph .entity .rank .label {
@@ -750,6 +882,95 @@ header nav {
 }
 .skillGraph .entity .bar25 {
   width: 25%;
+}
+
+/* 
+  ~~~-------------------------------------------------------------------------------------------------------------------
+  JobSkills
+  ----------------------------------------------------------------------------------------------------------------------
+*/
+.jobSkills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 
+  ~~~-------------------------------------------------------------------------------------------------------------------
+  Hobbies
+  ----------------------------------------------------------------------------------------------------------------------
+*/
+.hobbies {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #f7fcff;
+}
+.hobbies .content {
+  margin: 50px 0;
+  display: flex;
+}
+.hobbies img {
+  display: none;
+}
+@media only screen and (min-width:992px) {
+  .hobbies .hobbyImg {
+    width: 33%;
+    margin-right: 1.5rem;
+  }
+  .hobbies .hobbyImg img {
+    display: block;
+    width: 100%;
+  }
+  .hobbies .hobbyText {
+    width: calc(66% - 1.5rem);
+  }
+}
+.hobbies p {
+  font-size: 1.3em;
+}
+.hobbies strong {
+  font-size: 2em;
+  display: block;
+  text-align: center;
+}
+
+/* 
+  ~~~-------------------------------------------------------------------------------------------------------------------
+  Concact
+  ----------------------------------------------------------------------------------------------------------------------
+*/
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.contact h2 {
+  color: #F7FCFF;
+  text-align: center;
+  padding-bottom: 7px;
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-image: linear-gradient(90deg, #1e4158 20%, #f7fcff 50%, #1e4158 80%) 1;
+}
+.contact form {
+  margin: 50px 0;
+  min-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.contact form input {
+  width: 360px;
+  margin-bottom: 1.5rem;
+  height: 40px;
+}
+.contact form textarea {
+  width: 360px;
+  height: 120px;
 }
 
 /* 

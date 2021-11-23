@@ -3,7 +3,9 @@
 @import 'variables';
 @import 'mixins';
 
-
+$flexGutter: 1.5rem;
+$pageGutter: 0 1.5rem;
+$hexCP: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 
 
 
@@ -19,7 +21,7 @@
 body {
   font: 100% $bodyFont;
   color: $brandPrimaryTextColor;
-  background: #ECE5CF;
+  background: #1E4158;
   
   
 }
@@ -32,7 +34,7 @@ MQ Mixin
 }; */
 
 h1{
-  font: 2em $headerFont;
+  font: 2.5em $headerFont;
   font-weight: bold;
 }
 
@@ -43,18 +45,38 @@ h1{
   ----------------------------------------------------------------------------------------------------------------------
 */
 
-.test{
-  display: block;
-  
+.hexagon {
+  position: relative;
+  width: 300px; 
+  height: 173.21px;
+  background-color: #64C7CC;
+  margin: 86.60px 0;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 86.60px solid #64C7CC;
+}
+
+.hexagon:after {
+  top: 100%;
+  width: 0;
+  border-top: 86.60px solid #64C7CC;
 }
 
 .content{
-  padding:0 10px;
-  
-  @include mediaBreakpoint(tablet){
-    width:90vw;
-    padding: 0;
-  }
+  width: calc(100% - 3rem);
+  max-width: 1200px;
+  margin:0 1.5rem;
   
 }
 
@@ -78,6 +100,21 @@ h1{
   color: $brandReverseTextColor;
 }
 
+.transitionDown{
+    width: 60%;
+    border-top: 4vh solid #303030;
+    border-left: 17vw solid transparent;
+    border-right: 17vw solid transparent;
+}
+
+.transitionUp{
+    width: 60%;
+    border-bottom: 4vh solid #303030;
+    border-left: 17vw solid transparent;
+    border-right: 17vw solid transparent;
+}
+
+
 /* 
   ~~~-------------------------------------------------------------------------------------------------------------------
   JS Scroll Animation Classes
@@ -98,11 +135,17 @@ h1{
     transition: transform 1s, opacity 1s ease-in;
 
     &.fromLeft{
-      transform: translateX(-100%);
+      transform: translateX(-90%);
+      @include mediaBreakpoint(laptop){
+        transform: translateX(-100%);
+      }
     }
 
     &.fromRight{
-      transform: translateX(100%);
+      transform: translateX(90%);
+      @include mediaBreakpoint(laptop){
+        transform: translateX(100%);
+      }
     }
 
     &.appear{
@@ -120,7 +163,7 @@ h1{
 header{
   background: #2D6284;
   color:#fff;
-  width:100vw;
+  width:100%;
   position: fixed;
   z-index: 1000;
 
@@ -208,98 +251,169 @@ header{
   ----------------------------------------------------------------------------------------------------------------------
 */
 
+
+
+
+
 .intro {
   padding-top: 50px;
   min-height: 100vh;
-/*   
-  padding: 15px;
-  display: flex;
-  align-items: center; */
-
-  .picText{
-    strong{
-      font-size: 1.5em;
-      margin:10px 0;
-    }
-
-
-    .socialLinks{
-      margin:10px 0;
-      display: flex;
-      justify-content: space-between;
-
-      div{
-        font-size: 1.8em;
-        &:hover{
-          font-size: 2em;
-          color: #ECE5CF;
-        }
-      }
-
-    }
+  @include mediaBreakpoint(laptop){
+  padding-top: 0;
+  display: flex;  
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
   }
-  
 
   .content{
     display: flex;    
     flex-direction: column;
-    @include mediaBreakpoint(desktop){
+    @include mediaBreakpoint(laptop){
+      width: calc(100% - 3rem);
+      max-width: 1200px;
       flex-direction: row;
       align-items: center;
     }
   }
 
-  .bioPic{
+  .bioContact{
     
     display: flex;
     align-items: center;
-    @include mediaBreakpoint(desktop){
-      width:25vw;
-      flex-direction:column;
-     }
     justify-content: space-around;
-
-    img{
-      border-radius: 50%;
-      
+    @include mediaBreakpoint(laptop){
+      align-items: flex-start;
+      flex-direction: column;
+      width: 25%;
+      padding-right: $flexGutter;
     }
+    
+
+    .avatar{
+      width:25%;
+      @include mediaBreakpoint(laptop){
+        width:100%;
+        display: flex;
+      }
+
+      img{
+        border-radius: 50%;
+        width:100%;
+        max-width: 200px;
+      }
+    }
+
+
+    .picText{
+      width:calc(75% - $flexGutter);
+      padding-left: $flexGutter;
+      @include mediaBreakpoint(laptop){
+        padding-left: 0;
+        width:100%;
+      }
+  
+      strong{
+        font-size: 5.2vw;
+        @include mediaBreakpoint(laptop){
+          font-size: 1.3rem;
+          display: block;
+          text-align: center;
+        }
+        margin:10px 0;
+      }
+  
+  
+      .socialLinks{
+        margin:10px 0;
+        display: flex;
+        
+  
+  
+  
+        a{
+          font-size: 1.8em;
+          width:40px;
+          height: 40px;
+          color:#fff;
+          display: block;
+          text-decoration: none;
+  
+          &:not(:first-child) {
+            padding-left: $flexGutter;
+          }
+          &:hover{
+            font-size: 2em;
+            color: #ECE5CF;
+          }
+        }
+  
+      }
+    }
+    
   }
   
-  .bioText{
-    margin-top: 30px;
-    strong{
-      font: 3.5em $headerFont;
+  
+ 
+
+  .skillset{
+    @include mediaBreakpoint(tablet){
+      width:75%;
+    }
+    
+
+    .headline{
+      font: 3.6em $headerFont;
       text-align: center;
+      padding: $flexGutter 0;
       display: block;
     }
-    p{
-      font-size: 1.5em;
+
+    .skills{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      @include mediaBreakpoint(tablet){
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
     }
-  }
 
+    .skillIcon{
+      display: flex;
+      flex-direction: row;
+      @include mediaBreakpoint(tablet){
+        flex-direction: column;
+        width:calc(33% - $flexGutter);
+        align-items: center;
 
-@include mediaBreakpoint(desktop){
+        strong{
+          display:block;
+          text-align: center;
+        }
+      }
 
-  .bioText {
-    
-    width:65vw;
-    strong {
-      text-align: left;
-      font: 8em $headerFont;
       
-    }
-    p{
-      font-size: 2em;
+
+      .icon{
+        max-width: 75px;
+        padding-right: $flexGutter;
+        @include mediaBreakpoint(tablet){
+          max-width: 150px;
+          padding:0;
+        }
+      }
     }
   }
-}
-
 
   
 
+
+
+
+
 }
-
-
 
 
 
@@ -318,18 +432,20 @@ header{
 
 .jobPosition{
   background: #fff;
-  box-shadow: #ccc 3px 3px 3px;
+  box-shadow: #303030 3px 3px 3px;
   border:1px solid #ddd;
+  width:100%;
+  padding:$flexGutter;
   
   @include mediaBreakpoint(tablet){
-    width:95vw;
+    
   }
 
   @include mediaBreakpoint(desktop){
-    width: 90vw;
+    max-width: 1200px; 
   }
 
-  padding:10px;
+  
   margin:25px 0;
 
   .jobContent{
@@ -342,14 +458,7 @@ header{
       
     }
 
-  .button{
-    opacity: 0;
-    transition: opacity 250ms ease-in;
-  }
-
-  &:hover .button{
-    opacity: 1;
-  }
+  
   
   .wrapper{
     position: relative;
@@ -357,9 +466,10 @@ header{
   }
 
   img{
-    max-width: 773px;
+    max-width: 700px;
     width: 100%;
     align-self: center;
+    padding-right: $flexGutter;
   }
 
   @include mediaBreakpoint(desktop){
@@ -400,13 +510,19 @@ header{
     }
   }
 
+  
+
   }
 
   .jobHeader{
     h1{
-      display: flex;
-      justify-content: space-between;
+      text-align: center;
+      font-size: 2rem;
       @include mediaBreakpoint(tablet){
+        font-size: 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
         display: block;
         min-height: 115px;
       }
@@ -416,9 +532,7 @@ header{
       align-items: center;
 
       span{
-        @include mediaBreakpoint(tablet){
-          display: block;
-        }
+        display: block;
         font-size: .65em;
       }
 
@@ -428,71 +542,92 @@ header{
 
   .jobFooter{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    @include mediaBreakpoint(tablet){flex-direction: row; }
+
+    .tagList{
+      list-style-type: none;
+      display: flex;
+      padding-left: 0;
+      flex-wrap: wrap;
+      width:100%;
+      @include mediaBreakpoint(tablet){width:75%; }
+  
+      li{
+        margin:1px 5px;
+        border: 1px solid;
+        border-radius:3px;
+        padding: 1px 3px;
+      }
+    }
+
   }
   
-
-  .tagList{
-    list-style-type: none;
-    display: flex;
-    padding-left: 0;
-    flex-wrap: wrap;
-    width:75%;
-
-    li{
-      margin:1px 5px;
-      border: 1px solid;
-      border-radius:3px;
-      padding: 1px 3px;
-    }
+  .button{
+    opacity: 1;
+    width: 100%;
+    text-align: center;
+    padding:20px 0;
   }
-}
 
-/* 
-  ~~~-------------------------------------------------------------------------------------------------------------------
-  Skillset
-  ----------------------------------------------------------------------------------------------------------------------
-*/
-
-  .skillset{
-    .content{
-      display: flex;
-      justify-content: space-between;
-      padding:20px 0;
-    }
-
-    .skillIcon{
-      min-height: 100px;
-      border:1px solid;
+  &.design{
+    &:hover .button{
+      opacity: 0;
     }
   }
 
-/* 
-  ~~~-------------------------------------------------------------------------------------------------------------------
-  Hobbies
-  ----------------------------------------------------------------------------------------------------------------------
-*/
 
-.hobbies{
- 
-
-   
-    
-    
-
-    p{
-      font-size: 1.3em;
+  @include mediaBreakpoint(tablet){
+    .button{
+      opacity: 0;
+      transition: opacity 250ms ease-in;
+      width:15%;
+      padding:10px 0;
     }
-    strong{
-      font-size: 2em;
+  
+    &:hover .button{
+      opacity: 1;
     }
-
-
-   
+  }
+  
 }
 
 
+
+.designContent{
+  display: block;
+
+  
+  
+
+  .entry{
+    margin:25px 0;
+
+
+    .main{
+      @include mediaBreakpoint(tablet){
+        display: flex;
+        align-items: center;
+        
+      }
+
+    }
+
+    
+
+    @include mediaBreakpoint(tablet){
+      &:hover .button{
+        opacity: 1;
+      }
+    }
+
+    .jobFooter{
+      width: 100%;
+    }
+  } 
+}
 
 .skillGraph{
   
@@ -506,13 +641,14 @@ header{
       font-weight:bold;
       border-right: 1px solid;
       text-align: center;
-      padding:10px 5px;
+      padding:5px;
       background-color: #fff;
-      width: 50%;
+      width: 25%;
+      max-width: 100px;
     }
 
     .rank {
-      width: 80%;
+      flex-grow: 2;
       position: relative;
       .label{
         position: absolute;
@@ -549,9 +685,129 @@ header{
       width:25%;
     }
   }
-
   
 }
+
+/* 
+  ~~~-------------------------------------------------------------------------------------------------------------------
+  JobSkills
+  ----------------------------------------------------------------------------------------------------------------------
+*/
+
+.jobSkills{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+/* 
+  ~~~-------------------------------------------------------------------------------------------------------------------
+  Hobbies
+  ----------------------------------------------------------------------------------------------------------------------
+*/
+
+.hobbies{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color:#f7fcff;
+
+ .content{
+   margin:50px 0;
+   display: flex;
+ }
+
+ img{
+  display: none;
+}
+ @include mediaBreakpoint(laptop){
+  .hobbyImg{
+    width: 33%;
+    margin-right: $flexGutter;
+
+    img{
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .hobbyText{
+    width:calc(66% - $flexGutter);
+  }
+
+  
+ }
+ 
+   
+    
+    
+
+    p{
+      font-size: 1.3em;
+    }
+    strong{
+      font-size: 2em;
+      display: block;
+      text-align: center;
+    }
+
+
+   
+}
+
+
+
+
+
+
+
+/* 
+  ~~~-------------------------------------------------------------------------------------------------------------------
+  Concact
+  ----------------------------------------------------------------------------------------------------------------------
+*/
+
+
+
+.contact{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  h2{
+    color:$brandReverseTextColor;
+    text-align: center;
+    padding-bottom: 7px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-image: linear-gradient(90deg, #1e4158 20%, #f7fcff 50%, #1e4158 80%) 1;
+                  
+  }
+ 
+  form{
+    margin:50px 0;
+    min-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    input{
+      width:360px;
+      margin-bottom: $flexGutter;
+      height: 40px;
+    }
+
+    textarea{
+      width: 360px;
+      height: 120px;
+    }
+  }
+}
+
 
 
 /* 
