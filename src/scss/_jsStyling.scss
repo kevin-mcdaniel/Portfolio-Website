@@ -1,0 +1,39 @@
+@import 'mixins';
+
+/* 
+  ~~~-------------------------------------------------------------------------------------------------------------------
+  JS Scroll Animation Classes
+  ----------------------------------------------------------------------------------------------------------------------
+*/
+
+.fadeIn{
+    opacity: 0;
+    transition:opacity 250ms ease-in;
+  
+    &.appear{
+      opacity: 1;
+    }
+  
+  }
+  
+  .slideIn{
+      transition: transform 1s, opacity 1s ease-in;
+  
+      &.fromLeft{
+        transform: translateX(-90%);
+        @include mediaBreakpoint(laptop){
+          transform: translateX(-100%);
+        }
+      }
+  
+      &.fromRight{
+        transform: translateX(90%);
+        @include mediaBreakpoint(laptop){
+          transform: translateX(100%);
+        }
+      }
+  
+      &.appear{
+        transform: translateX(0%);
+      }
+  }

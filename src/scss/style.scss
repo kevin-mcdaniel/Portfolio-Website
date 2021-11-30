@@ -1,14 +1,11 @@
 @use 'reset.scss';
-
-@import 'variables';
-@import 'mixins';
+@use 'jsStyling.scss';
+@import "variables";
+@import "mixins";
 
 $flexGutter: 1.5rem;
 $pageGutter: 0 1.5rem;
 $hexCP: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-
-
-
 
 /* 
   ~~~-------------------------------------------------------------------------------------------------------------------
@@ -16,14 +13,14 @@ $hexCP: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
   ----------------------------------------------------------------------------------------------------------------------
 */
 
-
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font: 100% $bodyFont;
   color: $brandPrimaryTextColor;
-  background: #1E4158;
-  
-  
+  background: #1e4158;
 }
 
 /*
@@ -33,10 +30,25 @@ MQ Mixin
   background: red;
 }; */
 
-h1{
+h1 {
   font: 2.5em $headerFont;
   font-weight: bold;
 }
+
+form{
+
+  input{
+    font-family: $headerFont;
+  }
+  
+  input:not(:focus):not(:placeholder-shown):invalid {
+    background-color: $errorRedBackground;
+  }
+
+  
+
+}
+
 
 
 /* 
@@ -45,113 +57,47 @@ h1{
   ----------------------------------------------------------------------------------------------------------------------
 */
 
-.hexagon {
-  position: relative;
-  width: 300px; 
-  height: 173.21px;
-  background-color: #64C7CC;
-  margin: 86.60px 0;
-}
-
-.hexagon:before,
-.hexagon:after {
-  content: "";
-  position: absolute;
-  width: 0;
-  border-left: 150px solid transparent;
-  border-right: 150px solid transparent;
-}
-
-.hexagon:before {
-  bottom: 100%;
-  border-bottom: 86.60px solid #64C7CC;
-}
-
-.hexagon:after {
-  top: 100%;
-  width: 0;
-  border-top: 86.60px solid #64C7CC;
-}
-
-.content{
+.content {
   width: calc(100% - 3rem);
   max-width: 1200px;
-  margin:0 1.5rem;
-  
+  margin: 0 1.5rem;
 }
 
-.button{
-  padding:10px;
+.button {
+  padding: 10px;
   text-decoration: none;
   font-weight: bold;
   color: #000;
-  
-  &:hover{
-    cursor:pointer;
+
+  &:hover {
+    cursor: pointer;
   }
-  &.cta{
-    background-color:#EBAC49;
-    
+  &.cta {
+    background-color: #ebac49;
   }
 }
 
-.reverseBlock{
-  background: #303030;
+.reverseBlock {
+  background: $brandPrimaryBlack;
   color: $brandReverseTextColor;
 }
 
-.transitionDown{
-    width: 60%;
-    border-top: 4vh solid #303030;
-    border-left: 17vw solid transparent;
-    border-right: 17vw solid transparent;
+.transitionDown {
+  width: 60%;
+  border-top: 4vh solid $brandPrimaryBlack;
+  border-left: 17vw solid transparent;
+  border-right: 17vw solid transparent;
 }
 
-.transitionUp{
-    width: 60%;
-    border-bottom: 4vh solid #303030;
-    border-left: 17vw solid transparent;
-    border-right: 17vw solid transparent;
+.transitionUp {
+  width: 60%;
+  border-bottom: 4vh solid $brandPrimaryBlack;
+  border-left: 17vw solid transparent;
+  border-right: 17vw solid transparent;
 }
 
 
-/* 
-  ~~~-------------------------------------------------------------------------------------------------------------------
-  JS Scroll Animation Classes
-  ----------------------------------------------------------------------------------------------------------------------
-*/
 
-.fadeIn{
-  opacity: 0;
-  transition:opacity 250ms ease-in;
-
-  &.appear{
-    opacity: 1;
-  }
-
-}
-
-.slideIn{
-    transition: transform 1s, opacity 1s ease-in;
-
-    &.fromLeft{
-      transform: translateX(-90%);
-      @include mediaBreakpoint(laptop){
-        transform: translateX(-100%);
-      }
-    }
-
-    &.fromRight{
-      transform: translateX(90%);
-      @include mediaBreakpoint(laptop){
-        transform: translateX(100%);
-      }
-    }
-
-    &.appear{
-      transform: translateX(0%);
-    }
-}
 
 
 /* 
@@ -160,90 +106,77 @@ h1{
   ----------------------------------------------------------------------------------------------------------------------
 */
 
-header{
-  background: #2D6284;
-  color:#fff;
-  width:100%;
+header {
+  background: $brandPrimaryBlue;
+  color: $brandReverseTextColor;
+  width: 100%;
   position: fixed;
   z-index: 1000;
 
-  .content{
+  .content {
     display: flex;
     justify-content: space-between;
-    margin:0 auto;
+    margin: 0 auto;
   }
 
-  .brand{
-    font:2em $headerFont;
+  .brand {
+    font: 2em $headerFont;
     font-weight: bold;
-    
   }
 
-  nav{
-    display:none;
-      @include mediaBreakpoint(desktop){
-        display:flex;
-        justify-content: space-between;
-        font-size: 1.2em;
-        width:20vw;
-        
+  nav {
+    display: none;
+    @include mediaBreakpoint(desktop) {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2em;
+      width: 20vw;
 
-        
-        div{
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding:10px;
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        cursor:pointer;
+      }
+
+      &.navAbout {
+        .navAbout {
+          background: $brandPrimaryBlack;
+          color: $brandReverseTextColor;
         }
+      }
 
-        &.navAbout{
-          .navAbout{
-            background:#303030;
-            color:#fff;
-
-          }
+      &.navWork {
+        .navWork {
+          background: $brandPrimaryBlack;
+          color: $brandReverseTextColor;
         }
+      }
 
-        
-
-        &.navWork{
-          .navWork{
-            background:#303030;
-            color:#fff;
-
-          }
+      &.navSkillset {
+        .navSkillset {
+          background: $brandPrimaryBlack;
+          color: $brandReverseTextColor;
         }
+      }
 
-        &.navSkillset{
-          .navSkillset{
-            background:#303030;
-            color:#fff;
-
-          }
+      &.navHobbies {
+        .navHobbies {
+          background: $brandPrimaryBlack;
+          color: $brandReverseTextColor;
         }
+      }
 
-        &.navHobbies{
-          .navHobbies{
-            background:#303030;
-            color:#fff;
-
-          }
+      &.navContact {
+        .navContact {
+          background: $brandPrimaryBlack;
+          color: $brandReverseTextColor;
         }
-        
-        &.navContact{
-          .navContact{
-            background:#303030;
-            color:#fff;
-
-          }
-        }
+      }
     }
-    
   }
-
-  
 }
-
 
 /* 
   ~~~-------------------------------------------------------------------------------------------------------------------
@@ -251,25 +184,22 @@ header{
   ----------------------------------------------------------------------------------------------------------------------
 */
 
-
-
-
-
 .intro {
   padding-top: 50px;
   min-height: 100vh;
-  @include mediaBreakpoint(laptop){
-  padding-top: 0;
-  display: flex;  
-  align-items: center;
+  display: flex;
   justify-content: space-around;
-  flex-direction: column;
+
+  @include mediaBreakpoint(tablet) {
+    padding-top: 0;
+    align-items: center;
+    flex-direction: column;
   }
 
-  .content{
-    display: flex;    
+  .content {
+    display: flex;
     flex-direction: column;
-    @include mediaBreakpoint(laptop){
+    @include mediaBreakpoint(laptop) {
       width: calc(100% - 3rem);
       max-width: 1200px;
       flex-direction: row;
@@ -277,145 +207,60 @@ header{
     }
   }
 
-  .bioContact{
-    
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    @include mediaBreakpoint(laptop){
-      align-items: flex-start;
-      flex-direction: column;
-      width: 25%;
-      padding-right: $flexGutter;
-    }
-    
-
-    .avatar{
-      width:25%;
-      @include mediaBreakpoint(laptop){
-        width:100%;
-        display: flex;
+  .skillset {
+    .headline {
+      font-family: $headerFont;
+      font-size: 14vw;
+      @include mediaBreakpoint(desktop) {
+        font-size: 10vw;
       }
-
-      img{
-        border-radius: 50%;
-        width:100%;
-        max-width: 200px;
-      }
-    }
-
-
-    .picText{
-      width:calc(75% - $flexGutter);
-      padding-left: $flexGutter;
-      @include mediaBreakpoint(laptop){
-        padding-left: 0;
-        width:100%;
-      }
-  
-      strong{
-        font-size: 5.2vw;
-        @include mediaBreakpoint(laptop){
-          font-size: 1.3rem;
-          display: block;
-          text-align: center;
-        }
-        margin:10px 0;
-      }
-  
-  
-      .socialLinks{
-        margin:10px 0;
-        display: flex;
-        
-  
-  
-  
-        a{
-          font-size: 1.8em;
-          width:40px;
-          height: 40px;
-          color:#fff;
-          display: block;
-          text-decoration: none;
-  
-          &:not(:first-child) {
-            padding-left: $flexGutter;
-          }
-          &:hover{
-            font-size: 2em;
-            color: #ECE5CF;
-          }
-        }
-  
-      }
-    }
-    
-  }
-  
-  
- 
-
-  .skillset{
-    @include mediaBreakpoint(tablet){
-      width:75%;
-    }
-    
-
-    .headline{
-      font: 3.6em $headerFont;
       text-align: center;
       padding: $flexGutter 0;
       display: block;
     }
 
-    .skills{
+    .skills {
       width: 100%;
       display: flex;
       flex-direction: column;
-      @include mediaBreakpoint(tablet){
+      margin-bottom: $flexGutter;
+
+      @include mediaBreakpoint(tablet) {
         flex-direction: row;
         justify-content: space-between;
       }
-
     }
 
-    .skillIcon{
+    .skillIcon {
       display: flex;
-      flex-direction: row;
-      @include mediaBreakpoint(tablet){
-        flex-direction: column;
-        width:calc(33% - $flexGutter);
-        align-items: center;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      @include mediaBreakpoint(tablet) {
+        width: calc(33% - $flexGutter);
+      }
 
-        strong{
-          display:block;
-          text-align: center;
+      strong {
+        display: block;
+        text-align: center;
+      }
+
+      .icon {
+        max-width: 200px;
+        @include mediaBreakpoint(tablet) {
+          max-width: 150px;
         }
       }
 
-      
-
-      .icon{
-        max-width: 75px;
-        padding-right: $flexGutter;
-        @include mediaBreakpoint(tablet){
-          max-width: 150px;
-          padding:0;
+      p {
+        text-align: center;
+        @include mediaBreakpoint(tablet) {
+          text-align: left;
         }
       }
     }
   }
-
-  
-
-
-
-
-
 }
-
-
 
 /* 
   ~~~-------------------------------------------------------------------------------------------------------------------
@@ -423,102 +268,86 @@ header{
   ----------------------------------------------------------------------------------------------------------------------
 */
 
-.jobs{
+.jobs {
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
 }
 
-.jobPosition{
+.jobPosition {
   background: #fff;
-  box-shadow: #303030 3px 3px 3px;
-  border:1px solid #ddd;
-  width:100%;
-  padding:$flexGutter;
-  
-  @include mediaBreakpoint(tablet){
-    
+  box-shadow: $brandPrimaryBlack 3px 3px 3px;
+  border: 1px solid #ddd;
+  width: 100%;
+  padding: $flexGutter;
+
+  @include mediaBreakpoint(tablet) {
   }
 
-  @include mediaBreakpoint(desktop){
-    max-width: 1200px; 
+  @include mediaBreakpoint(desktop) {
+    max-width: 1200px;
   }
 
-  
-  margin:25px 0;
+  margin: 25px 0;
 
-  .jobContent{
+  .jobContent {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    @include mediaBreakpoint(desktop){
+    @include mediaBreakpoint(desktop) {
       flex-wrap: nowrap;
     }
-      
-    }
+  }
 
-  
-  
-  .wrapper{
+  .wrapper {
     position: relative;
     z-index: 10;
   }
 
-  img{
+  img {
     max-width: 700px;
     width: 100%;
     align-self: center;
     padding-right: $flexGutter;
   }
 
-  @include mediaBreakpoint(desktop){
-    .jobDesc{
-      width:50%
+  @include mediaBreakpoint(desktop) {
+    .jobDesc {
+      width: 50%;
     }
   }
 
-  @include mediaBreakpoint(tablet){
+  @include mediaBreakpoint(tablet) {
+    &.lithia {
+      h1 {
+        background: url("../img/portfolio/LithiaLogo.jpg");
+      }
+    }
 
-    
+    &.bap {
+      h1 {
+        background: url("../img/portfolio/BAPLogo.jpg");
+      }
+    }
+    &.ms {
+      h1 {
+        background: url("../img/portfolio/MSLogo.jpg");
+      }
+    }
 
-
-  &.lithia{
-    
-    h1{
-      background:url('../img/portfolio/LithiaLogo.jpg');
+    &.fmg {
+      h1 {
+        background: url("../img/portfolio/FMGLogo.jpg");
+      }
     }
   }
 
-  &.bap{
-    
-    h1{
-      background:url('../img/portfolio/BAPLogo.jpg');
-    }
-  }
-  &.ms{
-    
-    h1{
-      background:url('../img/portfolio/MSLogo.jpg');
-    }
-  }
-
-  &.fmg{
-    
-    h1{
-      background:url('../img/portfolio/FMGLogo.jpg');
-    }
-  }
-
-  
-
-  }
-
-  .jobHeader{
-    h1{
+  .jobHeader {
+    h1 {
       text-align: center;
       font-size: 2rem;
-      @include mediaBreakpoint(tablet){
+      @include mediaBreakpoint(tablet) {
         font-size: 2.5rem;
         display: flex;
         justify-content: space-between;
@@ -531,117 +360,104 @@ header{
       margin: 10px 0;
       align-items: center;
 
-      span{
+      span {
         display: block;
-        font-size: .65em;
+        font-size: 0.65em;
       }
-
-    }  
+    }
   }
 
-
-  .jobFooter{
+  .jobFooter {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    @include mediaBreakpoint(tablet){flex-direction: row; }
+    @include mediaBreakpoint(tablet) {
+      flex-direction: row;
+    }
 
-    .tagList{
+    .tagList {
       list-style-type: none;
       display: flex;
       padding-left: 0;
       flex-wrap: wrap;
-      width:100%;
-      @include mediaBreakpoint(tablet){width:75%; }
-  
-      li{
-        margin:1px 5px;
+      width: 100%;
+      @include mediaBreakpoint(tablet) {
+        width: 75%;
+      }
+
+      li {
+        margin: 1px 5px;
         border: 1px solid;
-        border-radius:3px;
+        border-radius: 3px;
         padding: 1px 3px;
       }
     }
-
   }
-  
-  .button{
+
+  .button {
     opacity: 1;
     width: 100%;
     text-align: center;
-    padding:20px 0;
+    padding: 20px 0;
   }
 
-  &.design{
-    &:hover .button{
+  &.design {
+    &:hover .button {
       opacity: 0;
     }
   }
 
-
-  @include mediaBreakpoint(tablet){
-    .button{
+  @include mediaBreakpoint(tablet) {
+    .button {
       opacity: 0;
       transition: opacity 250ms ease-in;
-      width:15%;
-      padding:10px 0;
+      width: 15%;
+      padding: 10px 0;
     }
-  
-    &:hover .button{
+
+    &:hover .button {
       opacity: 1;
     }
   }
-  
 }
 
-
-
-.designContent{
+.designContent {
   display: block;
 
-  
-  
+  .entry {
+    margin: 25px 0;
 
-  .entry{
-    margin:25px 0;
-
-
-    .main{
-      @include mediaBreakpoint(tablet){
+    .main {
+      @include mediaBreakpoint(tablet) {
         display: flex;
         align-items: center;
-        
       }
-
     }
 
-    
-
-    @include mediaBreakpoint(tablet){
-      &:hover .button{
+    @include mediaBreakpoint(tablet) {
+      &:hover .button {
         opacity: 1;
       }
     }
 
-    .jobFooter{
+    .jobFooter {
       width: 100%;
     }
-  } 
+  }
 }
 
-.skillGraph{
-  
-  .entity{
-   
+.skillGraph {
+  .entity {
     display: flex;
-    margin:-1px 10px;
-    border:1px solid;
+    margin: -1px 10px;
+    border: 1px solid;
 
-    .topic{
-      font-weight:bold;
+    .topic {
+      font-weight: bold;
       border-right: 1px solid;
       text-align: center;
-      padding:5px;
+      padding: 5px;
       background-color: #fff;
       width: 25%;
       max-width: 100px;
@@ -650,42 +466,40 @@ header{
     .rank {
       flex-grow: 2;
       position: relative;
-      .label{
+      .label {
         position: absolute;
-        background:transparent;
-        right:5px;
+        background: transparent;
+        right: 5px;
       }
-      div{
-        background: rgb(45,98,132);
-        background: rgba(45,98,132,1);
+      div {
+        background: $brandPrimaryBlue;
         height: 100%;
-        color:#000;
+        color: $brandPrimaryTextColor;
         display: flex;
         align-items: center;
         justify-content: end;
       }
     }
-    
-    .bar100{
-      width:100%;
-      .label{
-        color:#fff;
+
+    .bar100 {
+      width: 100%;
+      .label {
+        color: $brandReverseTextColor;
       }
     }
 
-    .bar75{
-      width:75%;
+    .bar75 {
+      width: 75%;
     }
 
-    .bar50{
-      width:50%;
+    .bar50 {
+      width: 50%;
     }
 
-    .bar25{
-      width:25%;
+    .bar25 {
+      width: 25%;
     }
   }
-  
 }
 
 /* 
@@ -694,13 +508,11 @@ header{
   ----------------------------------------------------------------------------------------------------------------------
 */
 
-.jobSkills{
+.jobSkills {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-
 
 /* 
   ~~~-------------------------------------------------------------------------------------------------------------------
@@ -708,140 +520,193 @@ header{
   ----------------------------------------------------------------------------------------------------------------------
 */
 
-.hobbies{
+.hobbies {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  color:#f7fcff;
+  color: $brandReverseTextColor;
+  min-height: 100vh;
 
- .content{
-   margin:50px 0;
-   display: flex;
- }
+  .content {
+    margin: 50px 0;
+    display: flex;
+  }
 
- img{
-  display: none;
-}
- @include mediaBreakpoint(laptop){
-  .hobbyImg{
-    width: 33%;
-    margin-right: $flexGutter;
+  img {
+    display: none;
+  }
+  @include mediaBreakpoint(laptop) {
+    .hobbyImg {
+      width: 33%;
+      margin-right: $flexGutter;
 
-    img{
-      display: block;
-      width: 100%;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .hobbyText {
+      width: calc(66% - $flexGutter);
     }
   }
 
-  .hobbyText{
-    width:calc(66% - $flexGutter);
+  p {
+    font-size: 1.3em;
   }
-
-  
- }
- 
-   
-    
-    
-
-    p{
-      font-size: 1.3em;
-    }
-    strong{
-      font-size: 2em;
-      display: block;
-      text-align: center;
-    }
-
-
-   
+  strong {
+    font-size: 2em;
+    display: block;
+    text-align: center;
+  }
 }
-
-
-
-
-
-
 
 /* 
   ~~~-------------------------------------------------------------------------------------------------------------------
-  Concact
+  Contact
   ----------------------------------------------------------------------------------------------------------------------
 */
 
-
-
-.contact{
+.contact {
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  min-height: 100vh;
 
-  h2{
-    color:$brandReverseTextColor;
-    text-align: center;
-    padding-bottom: 7px;
-    border-bottom-style: solid;
-    border-width: 1px;
-    border-image: linear-gradient(90deg, #1e4158 20%, #f7fcff 50%, #1e4158 80%) 1;
-                  
-  }
- 
-  form{
-    margin:50px 0;
-    min-width: 360px;
+  .content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    input{
-      width:360px;
-      margin-bottom: $flexGutter;
-      height: 40px;
-    }
-
-    textarea{
-      width: 360px;
-      height: 120px;
+    margin: $flexGutter 0;
+    @include mediaBreakpoint(laptop) {
+      flex-direction: row;
+      justify-content: space-around;
     }
   }
-}
 
+  .bioContact {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    @include mediaBreakpoint(laptop) {
+      align-items: flex-start;
+      flex-direction: column;
+      width: 25%;
+      padding-right: $flexGutter;
+    }
 
+    .avatar {
+      @include mediaBreakpoint(laptop) {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+      }
 
-/* 
-  ~~~-------------------------------------------------------------------------------------------------------------------
-  CSS ANIMATION CLASSES
-  ----------------------------------------------------------------------------------------------------------------------
-*/
+      img {
+        border-radius: 50%;
+        width: 100%;
+        max-width: 200px;
+      }
+    }
 
+    .picText {
+      width: calc(80% - $flexGutter);
+      padding-left: $flexGutter;
+      color: $brandReverseTextColor;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include mediaBreakpoint(laptop) {
+        padding-left: 0;
+        width: 100%;
+      }
 
-/*https://alligator.io/css/transition-box-shadows/*/
+      strong {
+        font-size: 5.2vw;
+        @include mediaBreakpoint(laptop) {
+          font-size: 1.3rem;
+          display: block;
+          text-align: center;
+        }
+        margin: 10px 0;
+      }
 
-.shadowTransition {
-  position: relative; /* For positioning the pseudo-element */
-  box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.3);
-}
+      .socialLinks {
+        margin: 10px 0;
+        display: flex;
 
-.shadowTransition::before {
-  /* Position the pseudo-element. */
-  content: ' ';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+        a {
+          font-size: 1.8em;
+          width: 40px;
+          height: 40px;
+          color: $brandReverseTextColor;
+          display: block;
+          text-decoration: none;
 
-  /* Create the box shadow at expanded size. */
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.5);
+          &:not(:first-child) {
+            padding-left: $flexGutter;
+          }
+          &:hover {
+            font-size: 2em;
+            color: #ece5cf;
+          }
+        }
+      }
+    }
+  }
 
-  /* Hidden by default. */
-  opacity: 0;
-  transition: opacity 500ms;
-}
+  .contactForm {
+    @include mediaBreakpoint(laptop) {
+      width: 75%;
+    }
+    h2 {
+      color: $brandReverseTextColor;
+      text-align: center;
+      padding-bottom: 7px;
+      border-bottom-style: solid;
+      border-width: 1px;
+      border-image: linear-gradient(
+          90deg,
+          #1e4158 20%,
+          #f7fcff 50%,
+          #1e4158 80%
+        )
+        1;
+    }
 
-.shadowTransition:hover::before {
-  /* Show the pseudo-element on hover. */
-  opacity: 1;
+    form {
+      margin: 50px 0;
+      min-width: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      .formStatus{
+        color: $brandReverseTextColor;
+      }
+
+      input {
+        min-width: 360px;
+        width: 75%;
+        margin-bottom: $flexGutter;
+        height: 40px;
+      }
+
+      textarea {
+        min-width: 360px;
+        width: 75%;
+        height: 120px;
+      }
+
+      .button {
+        width: 75%;
+        min-width: 360px;
+        margin: $flexGutter 0;
+        border: none;
+      }
+    }
+  }
 }

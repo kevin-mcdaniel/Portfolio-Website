@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Welcome</title>
+        <title>Kevin McDaniel - I Do Web Stuff</title>
         <link href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto:400,700|Roboto+Condensed:400,700" rel="stylesheet">
         <link rel="stylesheet" href="./css/bundle.css" />
@@ -14,30 +14,15 @@
                 <div class="brand">Kevin McDaniel</div>
 
                 <nav class="navAbout">
-                    <div class="navAbout">About</div>
-                    <div class="navWork">Work</div>
-                    <div class="navHobbies">Hobbies</div>
-                    <div class="navContact">Contact</div>
+                    <div class="navAbout jsScrollTarget" data-scrolltarget="intro">About</div>
+                    <div class="navWork jsScrollTarget" data-scrolltarget="jobs">Work</div>
+                    <div class="navHobbies jsScrollTarget" data-scrolltarget="hobbies">Hobbies</div>
+                    <div class="navContact jsScrollTarget" data-scrolltarget="contact">Contact</div>
                 </nav>
             </div>
         </header>
-        <section class="intro reverseBlock" data-sectionClass="navAbout">
+        <section class="intro reverseBlock" data-sectionClass="navAbout" id="intro">
             <div class="content">
-                <div class="bioContact">
-                    <div class="avatar">
-                        <img src="./img/portfolio/profilepic.jpg">
-                    </div>
-                    <div class="picText">
-                    <strong>Hi, I'm Kevin McDaniel</strong>
-                    <div>Web Designer/Developer/Guy</div>
-                    <div class="socialLinks">
-                        <a href="mailto:kevinpmcdaniel@gmail.com"  class="im im-mail" aria-label="Email Me"></a>
-                        <a href="https://github.com/kevin-mcdaniel" class="im im-github" aria-label="View my GitHub"></a>
-                        <a href="https://www.linkedin.com/in/kevinpmcdaniel/" class="im im-linkedin" aria-label="Visit me on LinkedIn"></a>
-                        <a href="https://www.youtube.com/c/hikingrogue" class="im im-youtube" aria-label="Visit me on Youtube"></a>
-                    </div>
-                    </div>
-                </div>
                 <div class="skillset">
                     <strong class="headline">I Do Web Stuff!</strong>
                     <div>
@@ -72,7 +57,7 @@
             
             
         </section>
-        <section class="jobs" data-sectionClass="navWork">
+        <section class="jobs" data-sectionClass="navWork" id="jobs">
             <div class="transitionDown"></div>
             <div class="jobPosition lithia fadeIn slideIn fromRight">
                 
@@ -391,7 +376,7 @@
         </section>
         
         
-        <section class="hobbies reverseBlock" data-sectionclass="navHobbies">
+        <section class="hobbies reverseBlock" data-sectionclass="navHobbies" id="hobbies">
             <div class="content">
                 <div class="hobbyImg">
                     <img src="./img/portfolio/pct25.jpg" alt="Northern Terminus of the PCT " />
@@ -406,30 +391,85 @@
             </div>
             
         </section>
-        <section class="contact" data-sectionclass="navContact" >
+        <section class="contact" data-sectionclass="navContact" id="contact" >
             <div class="transitionDown"></div>
             
             <div class="content">
-                <h2>Contact</h2>
-                <!-- https://formspree.io/forms/mvodeokj/integration -->
-                <form action="https://formspree.io/f/mvodeokj" method="POST" >
-                    <input type="hidden" id="hpHidden" value="" />
-                    <input type="email" id="contactEmail" aria-placeholder="Email" placeholder="Email" />
-                    <input type="text" id="contactName" aria-placeholder="Name" placeholder="Name" />
-                    <textarea id="contactMessage" aria-placeholder="Message" placeholder="Message"></textarea>
-                    <button class="button cta">Submit</button>
-                </form>
+                <div class="bioContact">
+                    <div class="avatar">
+                        <img src="./img/portfolio/profilepic.jpg">
+                    </div>
+                    <div class="picText">
+                    <strong>Kevin McDaniel</strong>
+                    <div>Web Designer/Developer/Person</div>
+                    <div class="socialLinks">
+                        <a href="mailto:kevinpmcdaniel@gmail.com"  class="im im-mail" aria-label="Email Me"></a>
+                        <a href="https://github.com/kevin-mcdaniel" class="im im-github" aria-label="View my GitHub"></a>
+                        <a href="https://www.linkedin.com/in/kevinpmcdaniel/" class="im im-linkedin" aria-label="Visit me on LinkedIn"></a>
+                        <a href="https://www.youtube.com/c/hikingrogue" class="im im-youtube" aria-label="Visit me on Youtube"></a>
+                    </div>
+                    </div>
+                </div>
+                <div class="contactForm">
+                    <h2>Contact</h2>
+                    <!-- https://formspree.io/forms/mvodeokj/integration -->
+                    <form action="https://formspree.io/f/mvodeokj" method="POST" id="contactForm" >
+                        <input type="hidden" id="hpHidden" value="" />
+                        <input type="email" name="email" id="contactEmail" required aria-placeholder="Email" placeholder="Email" />
+                        <input type="text" name="name" id="contactName" required aria-placeholder="Name" placeholder="Name" />
+                        <textarea id="contactMessage" name="message" required aria-placeholder="Message" placeholder="Message"></textarea>
+                        <button class="button cta">Submit</button>
+                        <div id="formStatus" class="formStatus"></div>
+                    </form>
+                    
+                </div>
             </div>
         </section>
         
         
     </body>
     <script type="text/javascript" >
+            
+            
+            async function contactSubmit(e) {
+            e.preventDefault();
+                const spamTrap = document.getElementById("hpHidden")
+                const status = document.getElementById("formStatus");
+                const form = document.getElementById("contactForm");
+                if(!spamTrap.value){
+                    
+                    let data = new FormData(e.target);
+                    fetch(e.target.action, {
+                        method: form.method,
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        status.innerHTML = "Thanks for your submission!";
+                        form.reset();
+                    }).catch(error => {
+                        status.innerHTML = "Oops! There was a problem submitting your form"
+                    });
+                } else {
+                    form.reset();
+                    status.innerHTML = "Thanks!"
+                }
+            }
+            
         document.addEventListener("DOMContentLoaded", () => {
             console.log('ready')
+            const form = document.getElementById("contactForm");
+            form.addEventListener("submit", contactSubmit)
 
             const sections = document.querySelectorAll("section");
-            
+            const jsScrollTargets = document.querySelectorAll(".jsScrollTarget");
+
+
+            jsScrollTargets.forEach(scrollTarget => {
+                scrollTarget.addEventListener("click", e => {document.getElementById(e.target.dataset.scrolltarget).scrollIntoView()});
+            })
+
         //const navObserver = new IntersectionObserver(callback, options);
             const navObserver = new IntersectionObserver((entries, observer) => {
                 const navTarget = document.querySelector("nav");

@@ -343,104 +343,6 @@ div, section, main, p {
 
 /* 
   ~~~-------------------------------------------------------------------------------------------------------------------
-  SCSS VARIABLES
-  ----------------------------------------------------------------------------------------------------------------------
-*/
-/* 
-  ~~~-------------------------------------------------------------------------------------------------------------------
-  TAG STYLING
-  ----------------------------------------------------------------------------------------------------------------------
-*/
-body {
-  font: 100% "Cabin", Sans-Serif;
-  color: #303030;
-  background: #1E4158;
-}
-
-/*
-MQ Mixin
-
-  @include mediaBreakpoint(desktop){
-  background: red;
-}; */
-h1 {
-  font: 2.5em "Roboto Condensed", Helvetica, sans-serif;
-  font-weight: bold;
-}
-
-/* 
-  ~~~-------------------------------------------------------------------------------------------------------------------
-  GENERIC ELEMENTS
-  ----------------------------------------------------------------------------------------------------------------------
-*/
-.hexagon {
-  position: relative;
-  width: 300px;
-  height: 173.21px;
-  background-color: #64C7CC;
-  margin: 86.6px 0;
-}
-
-.hexagon:before,
-.hexagon:after {
-  content: "";
-  position: absolute;
-  width: 0;
-  border-left: 150px solid transparent;
-  border-right: 150px solid transparent;
-}
-
-.hexagon:before {
-  bottom: 100%;
-  border-bottom: 86.6px solid #64C7CC;
-}
-
-.hexagon:after {
-  top: 100%;
-  width: 0;
-  border-top: 86.6px solid #64C7CC;
-}
-
-.content {
-  width: calc(100% - 3rem);
-  max-width: 1200px;
-  margin: 0 1.5rem;
-}
-
-.button {
-  padding: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  color: #000;
-}
-.button:hover {
-  cursor: pointer;
-}
-.button.cta {
-  background-color: #EBAC49;
-}
-
-.reverseBlock {
-  background: #303030;
-  color: #F7FCFF;
-}
-
-.transitionDown {
-  width: 60%;
-  border-top: 4vh solid #303030;
-  border-left: 17vw solid transparent;
-  border-right: 17vw solid transparent;
-}
-
-.transitionUp {
-  width: 60%;
-  border-bottom: 4vh solid #303030;
-  border-left: 17vw solid transparent;
-  border-right: 17vw solid transparent;
-}
-
-/* 
-  ~~~-------------------------------------------------------------------------------------------------------------------
   JS Scroll Animation Classes
   ----------------------------------------------------------------------------------------------------------------------
 */
@@ -477,12 +379,93 @@ h1 {
 
 /* 
   ~~~-------------------------------------------------------------------------------------------------------------------
+  SCSS VARIABLES
+  ----------------------------------------------------------------------------------------------------------------------
+*/
+/* 
+  ~~~-------------------------------------------------------------------------------------------------------------------
+  TAG STYLING
+  ----------------------------------------------------------------------------------------------------------------------
+*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font: 100% "Cabin", Sans-Serif;
+  color: #303030;
+  background: #1e4158;
+}
+
+/*
+MQ Mixin
+
+  @include mediaBreakpoint(desktop){
+  background: red;
+}; */
+h1 {
+  font: 2.5em "Roboto Condensed", Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+form input {
+  font-family: "Roboto Condensed", Helvetica, sans-serif;
+}
+form input:not(:focus):not(:placeholder-shown):invalid {
+  background-color: #fcc;
+}
+
+/* 
+  ~~~-------------------------------------------------------------------------------------------------------------------
+  GENERIC ELEMENTS
+  ----------------------------------------------------------------------------------------------------------------------
+*/
+.content {
+  width: calc(100% - 3rem);
+  max-width: 1200px;
+  margin: 0 1.5rem;
+}
+
+.button {
+  padding: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+}
+.button:hover {
+  cursor: pointer;
+}
+.button.cta {
+  background-color: #ebac49;
+}
+
+.reverseBlock {
+  background: #303030;
+  color: #F7FCFF;
+}
+
+.transitionDown {
+  width: 60%;
+  border-top: 4vh solid #303030;
+  border-left: 17vw solid transparent;
+  border-right: 17vw solid transparent;
+}
+
+.transitionUp {
+  width: 60%;
+  border-bottom: 4vh solid #303030;
+  border-left: 17vw solid transparent;
+  border-right: 17vw solid transparent;
+}
+
+/* 
+  ~~~-------------------------------------------------------------------------------------------------------------------
   HEADER
   ----------------------------------------------------------------------------------------------------------------------
 */
 header {
   background: #2D6284;
-  color: #fff;
+  color: #F7FCFF;
   width: 100%;
   position: fixed;
   z-index: 1000;
@@ -511,26 +494,27 @@ header nav {
     align-items: center;
     justify-content: center;
     padding: 10px;
+    cursor: pointer;
   }
   header nav.navAbout .navAbout {
     background: #303030;
-    color: #fff;
+    color: #F7FCFF;
   }
   header nav.navWork .navWork {
     background: #303030;
-    color: #fff;
+    color: #F7FCFF;
   }
   header nav.navSkillset .navSkillset {
     background: #303030;
-    color: #fff;
+    color: #F7FCFF;
   }
   header nav.navHobbies .navHobbies {
     background: #303030;
-    color: #fff;
+    color: #F7FCFF;
   }
   header nav.navContact .navContact {
     background: #303030;
-    color: #fff;
+    color: #F7FCFF;
   }
 }
 
@@ -542,13 +526,13 @@ header nav {
 .intro {
   padding-top: 50px;
   min-height: 100vh;
+  display: flex;
+  justify-content: space-around;
 }
-@media only screen and (min-width:992px) {
+@media only screen and (min-width:688px) {
   .intro {
     padding-top: 0;
-    display: flex;
     align-items: center;
-    justify-content: space-around;
     flex-direction: column;
   }
 }
@@ -564,88 +548,23 @@ header nav {
     align-items: center;
   }
 }
-.intro .bioContact {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-@media only screen and (min-width:992px) {
-  .intro .bioContact {
-    align-items: flex-start;
-    flex-direction: column;
-    width: 25%;
-    padding-right: 1.5rem;
-  }
-}
-.intro .bioContact .avatar {
-  width: 25%;
-}
-@media only screen and (min-width:992px) {
-  .intro .bioContact .avatar {
-    width: 100%;
-    display: flex;
-  }
-}
-.intro .bioContact .avatar img {
-  border-radius: 50%;
-  width: 100%;
-  max-width: 200px;
-}
-.intro .bioContact .picText {
-  width: calc(75% - 1.5rem);
-  padding-left: 1.5rem;
-}
-@media only screen and (min-width:992px) {
-  .intro .bioContact .picText {
-    padding-left: 0;
-    width: 100%;
-  }
-}
-.intro .bioContact .picText strong {
-  font-size: 5.2vw;
-  margin: 10px 0;
-}
-@media only screen and (min-width:992px) {
-  .intro .bioContact .picText strong {
-    font-size: 1.3rem;
-    display: block;
-    text-align: center;
-  }
-}
-.intro .bioContact .picText .socialLinks {
-  margin: 10px 0;
-  display: flex;
-}
-.intro .bioContact .picText .socialLinks a {
-  font-size: 1.8em;
-  width: 40px;
-  height: 40px;
-  color: #fff;
-  display: block;
-  text-decoration: none;
-}
-.intro .bioContact .picText .socialLinks a:not(:first-child) {
-  padding-left: 1.5rem;
-}
-.intro .bioContact .picText .socialLinks a:hover {
-  font-size: 2em;
-  color: #ECE5CF;
-}
-@media only screen and (min-width:688px) {
-  .intro .skillset {
-    width: 75%;
-  }
-}
 .intro .skillset .headline {
-  font: 3.6em "Roboto Condensed", Helvetica, sans-serif;
+  font-family: "Roboto Condensed", Helvetica, sans-serif;
+  font-size: 14vw;
   text-align: center;
   padding: 1.5rem 0;
   display: block;
+}
+@media only screen and (min-width:1312px) {
+  .intro .skillset .headline {
+    font-size: 10vw;
+  }
 }
 .intro .skillset .skills {
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.5rem;
 }
 @media only screen and (min-width:688px) {
   .intro .skillset .skills {
@@ -655,27 +574,33 @@ header nav {
 }
 .intro .skillset .skillIcon {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
 @media only screen and (min-width:688px) {
   .intro .skillset .skillIcon {
-    flex-direction: column;
     width: calc(33% - 1.5rem);
-    align-items: center;
-  }
-  .intro .skillset .skillIcon strong {
-    display: block;
-    text-align: center;
   }
 }
+.intro .skillset .skillIcon strong {
+  display: block;
+  text-align: center;
+}
 .intro .skillset .skillIcon .icon {
-  max-width: 75px;
-  padding-right: 1.5rem;
+  max-width: 200px;
 }
 @media only screen and (min-width:688px) {
   .intro .skillset .skillIcon .icon {
     max-width: 150px;
-    padding: 0;
+  }
+}
+.intro .skillset .skillIcon p {
+  text-align: center;
+}
+@media only screen and (min-width:688px) {
+  .intro .skillset .skillIcon p {
+    text-align: left;
   }
 }
 
@@ -860,10 +785,9 @@ header nav {
   right: 5px;
 }
 .skillGraph .entity .rank div {
-  background: #2d6284;
-  background: #2d6284;
+  background: #2D6284;
   height: 100%;
-  color: #000;
+  color: #303030;
   display: flex;
   align-items: center;
   justify-content: end;
@@ -872,7 +796,7 @@ header nav {
   width: 100%;
 }
 .skillGraph .entity .bar100 .label {
-  color: #fff;
+  color: #F7FCFF;
 }
 .skillGraph .entity .bar75 {
   width: 75%;
@@ -905,7 +829,8 @@ header nav {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  color: #f7fcff;
+  color: #F7FCFF;
+  min-height: 100vh;
 }
 .hobbies .content {
   margin: 50px 0;
@@ -938,7 +863,7 @@ header nav {
 
 /* 
   ~~~-------------------------------------------------------------------------------------------------------------------
-  Concact
+  Contact
   ----------------------------------------------------------------------------------------------------------------------
 */
 .contact {
@@ -946,8 +871,95 @@ header nav {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  min-height: 100vh;
 }
-.contact h2 {
+.contact .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+@media only screen and (min-width:992px) {
+  .contact .content {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+.contact .bioContact {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+@media only screen and (min-width:992px) {
+  .contact .bioContact {
+    align-items: flex-start;
+    flex-direction: column;
+    width: 25%;
+    padding-right: 1.5rem;
+  }
+}
+@media only screen and (min-width:992px) {
+  .contact .bioContact .avatar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+.contact .bioContact .avatar img {
+  border-radius: 50%;
+  width: 100%;
+  max-width: 200px;
+}
+.contact .bioContact .picText {
+  width: calc(80% - 1.5rem);
+  padding-left: 1.5rem;
+  color: #F7FCFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media only screen and (min-width:992px) {
+  .contact .bioContact .picText {
+    padding-left: 0;
+    width: 100%;
+  }
+}
+.contact .bioContact .picText strong {
+  font-size: 5.2vw;
+  margin: 10px 0;
+}
+@media only screen and (min-width:992px) {
+  .contact .bioContact .picText strong {
+    font-size: 1.3rem;
+    display: block;
+    text-align: center;
+  }
+}
+.contact .bioContact .picText .socialLinks {
+  margin: 10px 0;
+  display: flex;
+}
+.contact .bioContact .picText .socialLinks a {
+  font-size: 1.8em;
+  width: 40px;
+  height: 40px;
+  color: #F7FCFF;
+  display: block;
+  text-decoration: none;
+}
+.contact .bioContact .picText .socialLinks a:not(:first-child) {
+  padding-left: 1.5rem;
+}
+.contact .bioContact .picText .socialLinks a:hover {
+  font-size: 2em;
+  color: #ece5cf;
+}
+@media only screen and (min-width:992px) {
+  .contact .contactForm {
+    width: 75%;
+  }
+}
+.contact .contactForm h2 {
   color: #F7FCFF;
   text-align: center;
   padding-bottom: 7px;
@@ -955,7 +967,7 @@ header nav {
   border-width: 1px;
   border-image: linear-gradient(90deg, #1e4158 20%, #f7fcff 50%, #1e4158 80%) 1;
 }
-.contact form {
+.contact .contactForm form {
   margin: 50px 0;
   min-width: 360px;
   display: flex;
@@ -963,44 +975,23 @@ header nav {
   align-items: center;
   justify-content: space-between;
 }
-.contact form input {
-  width: 360px;
+.contact .contactForm form .formStatus {
+  color: #F7FCFF;
+}
+.contact .contactForm form input {
+  min-width: 360px;
+  width: 75%;
   margin-bottom: 1.5rem;
   height: 40px;
 }
-.contact form textarea {
-  width: 360px;
+.contact .contactForm form textarea {
+  min-width: 360px;
+  width: 75%;
   height: 120px;
 }
-
-/* 
-  ~~~-------------------------------------------------------------------------------------------------------------------
-  CSS ANIMATION CLASSES
-  ----------------------------------------------------------------------------------------------------------------------
-*/
-/*https://alligator.io/css/transition-box-shadows/*/
-.shadowTransition {
-  position: relative;
-  /* For positioning the pseudo-element */
-  box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.3);
-}
-
-.shadowTransition::before {
-  /* Position the pseudo-element. */
-  content: " ";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  /* Create the box shadow at expanded size. */
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.5);
-  /* Hidden by default. */
-  opacity: 0;
-  transition: opacity 500ms;
-}
-
-.shadowTransition:hover::before {
-  /* Show the pseudo-element on hover. */
-  opacity: 1;
+.contact .contactForm form .button {
+  width: 75%;
+  min-width: 360px;
+  margin: 1.5rem 0;
+  border: none;
 }
