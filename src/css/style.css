@@ -397,6 +397,13 @@ body {
   background: #1e4158;
 }
 
+a {
+  color: #479ad1;
+}
+a:visited {
+  color: #479ad1;
+}
+
 /*
 MQ Mixin
 
@@ -429,14 +436,15 @@ form input:not(:focus):not(:placeholder-shown):invalid {
 .button {
   padding: 10px;
   text-decoration: none;
-  font-weight: bold;
-  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 .button:hover {
   cursor: pointer;
 }
 .button.cta {
-  background-color: #ebac49;
+  background-color: #E79B25;
+  color: #F7FCFF;
 }
 
 .reverseBlock {
@@ -631,11 +639,12 @@ header nav {
 }
 .jobPosition .jobContent {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 @media only screen and (min-width:1312px) {
   .jobPosition .jobContent {
+    justify-content: space-between;
     flex-wrap: nowrap;
   }
 }
@@ -649,26 +658,37 @@ header nav {
   align-self: center;
   padding-right: 1.5rem;
 }
-@media only screen and (min-width:1312px) {
+@media only screen and (min-width:992px) {
+  .jobPosition img {
+    width: calc(50% - 1.5rem);
+  }
+}
+.jobPosition .jobDesc {
+  width: 100%;
+}
+@media only screen and (min-width:992px) {
   .jobPosition .jobDesc {
     width: 50%;
   }
 }
+.jobPosition .jobDesc ul {
+  padding-left: 1rem;
+}
 @media only screen and (min-width:688px) {
-  .jobPosition.lithia h1 {
+  .jobPosition.lithia h2 {
     background: url("../img/portfolio/LithiaLogo.jpg");
   }
-  .jobPosition.bap h1 {
+  .jobPosition.bap h2 {
     background: url("../img/portfolio/BAPLogo.jpg");
   }
-  .jobPosition.ms h1 {
+  .jobPosition.ms h2 {
     background: url("../img/portfolio/MSLogo.jpg");
   }
-  .jobPosition.fmg h1 {
+  .jobPosition.fmg h2 {
     background: url("../img/portfolio/FMGLogo.jpg");
   }
 }
-.jobPosition .jobHeader h1 {
+.jobPosition .jobHeader h2 {
   text-align: center;
   font-size: 2rem;
   background-position: top right;
@@ -677,7 +697,7 @@ header nav {
   align-items: center;
 }
 @media only screen and (min-width:688px) {
-  .jobPosition .jobHeader h1 {
+  .jobPosition .jobHeader h2 {
     font-size: 2.5rem;
     display: flex;
     justify-content: space-between;
@@ -686,7 +706,7 @@ header nav {
     min-height: 115px;
   }
 }
-.jobPosition .jobHeader h1 span {
+.jobPosition .jobHeader h2 span {
   display: block;
   font-size: 0.65em;
 }
@@ -701,23 +721,30 @@ header nav {
     flex-direction: row;
   }
 }
+.jobPosition .jobFooter h3 {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+@media only screen and (min-width:688px) {
+  .jobPosition .jobFooter h3 {
+    text-align: left;
+  }
+}
 .jobPosition .jobFooter .tagList {
   list-style-type: none;
   display: flex;
   padding-left: 0;
   flex-wrap: wrap;
   width: 100%;
-}
-@media only screen and (min-width:688px) {
-  .jobPosition .jobFooter .tagList {
-    width: 75%;
-  }
+  margin-top: 5px;
 }
 .jobPosition .jobFooter .tagList li {
-  margin: 1px 5px;
-  border: 1px solid;
+  margin: 3px 5px;
+  border: 1px solid #bebebe;
+  background: #ebebeb;
   border-radius: 3px;
-  padding: 1px 3px;
+  padding: 3px 5px;
 }
 .jobPosition .button {
   opacity: 1;
@@ -728,15 +755,18 @@ header nav {
 .jobPosition.design:hover .button {
   opacity: 0;
 }
+.jobPosition .jobSkills {
+  width: 100%;
+}
+@media only screen and (min-width:688px) {
+  .jobPosition .jobSkills {
+    width: calc(100% - 160px);
+  }
+}
 @media only screen and (min-width:688px) {
   .jobPosition .button {
-    opacity: 0;
-    transition: opacity 250ms ease-in;
-    width: 15%;
-    padding: 10px 0;
-  }
-  .jobPosition:hover .button {
-    opacity: 1;
+    width: 150px;
+    padding: 10px 5px;
   }
 }
 

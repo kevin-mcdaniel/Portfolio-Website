@@ -23,6 +23,17 @@ body {
   background: #1e4158;
 }
 
+a {
+  color:$brandLinkTextBlue;
+
+  &:visited{
+    color:$brandLinkTextBlue;
+  }
+}
+
+
+
+
 /*
 MQ Mixin
 
@@ -66,14 +77,17 @@ form{
 .button {
   padding: 10px;
   text-decoration: none;
-  font-weight: bold;
-  color: #000;
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+  
 
   &:hover {
     cursor: pointer;
   }
   &.cta {
-    background-color: #ebac49;
+    background-color: $brandPrimaryCta;
+    color: $brandReverseTextColor;
   }
 }
 
@@ -283,6 +297,7 @@ header {
   padding: $flexGutter;
 
   @include mediaBreakpoint(tablet) {
+   
   }
 
   @include mediaBreakpoint(desktop) {
@@ -293,9 +308,10 @@ header {
 
   .jobContent {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     @include mediaBreakpoint(desktop) {
+      justify-content: space-between;
       flex-wrap: nowrap;
     }
   }
@@ -310,41 +326,48 @@ header {
     width: 100%;
     align-self: center;
     padding-right: $flexGutter;
+    @include mediaBreakpoint(laptop) {  
+      width: calc(50% - 1.5rem); 
+    }
   }
+  .jobDesc {
+      width:100%;
+    @include mediaBreakpoint(laptop) {  
+        width: 50%;
+    }
 
-  @include mediaBreakpoint(desktop) {
-    .jobDesc {
-      width: 50%;
+    ul{
+      padding-left: 1rem;
     }
   }
 
   @include mediaBreakpoint(tablet) {
     &.lithia {
-      h1 {
+      h2 {
         background: url("../img/portfolio/LithiaLogo.jpg");
       }
     }
 
     &.bap {
-      h1 {
+      h2 {
         background: url("../img/portfolio/BAPLogo.jpg");
       }
     }
     &.ms {
-      h1 {
+      h2 {
         background: url("../img/portfolio/MSLogo.jpg");
       }
     }
 
     &.fmg {
-      h1 {
+      h2 {
         background: url("../img/portfolio/FMGLogo.jpg");
       }
     }
   }
 
   .jobHeader {
-    h1 {
+    h2 {
       text-align: center;
       font-size: 2rem;
       @include mediaBreakpoint(tablet) {
@@ -376,21 +399,32 @@ header {
       flex-direction: row;
     }
 
+    h3{
+      margin:0;
+      width: 100%;
+      text-align: center;
+      @include mediaBreakpoint(tablet) {
+        text-align: left;
+      }
+    }
+
     .tagList {
       list-style-type: none;
       display: flex;
       padding-left: 0;
       flex-wrap: wrap;
       width: 100%;
+      margin-top: 5px;
       @include mediaBreakpoint(tablet) {
-        width: 75%;
+        
       }
 
       li {
-        margin: 1px 5px;
-        border: 1px solid;
+        margin: 3px 5px;
+        border: 1px solid #bebebe;
+        background: #ebebeb;
         border-radius: 3px;
-        padding: 1px 3px;
+        padding: 3px 5px;
       }
     }
   }
@@ -408,17 +442,20 @@ header {
     }
   }
 
+  .jobSkills{
+    width:100%;
+    @include mediaBreakpoint(tablet) {
+      width:calc(100% - 160px);
+    }
+  }
+
   @include mediaBreakpoint(tablet) {
     .button {
-      opacity: 0;
-      transition: opacity 250ms ease-in;
-      width: 15%;
-      padding: 10px 0;
+      width: 150px;
+      padding: 10px 5px;
     }
 
-    &:hover .button {
-      opacity: 1;
-    }
+
   }
 }
 
