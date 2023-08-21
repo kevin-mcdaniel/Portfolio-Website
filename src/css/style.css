@@ -393,15 +393,13 @@ html {
 
 body {
   font: 100% "Cabin", Sans-Serif;
-  color: #303030;
+  color: #202020;
   background: #1e4158;
+  letter-spacing: 0.75px;
 }
 
-a {
-  color: #479ad1;
-}
-a:visited {
-  color: #479ad1;
+a, a:visited {
+  color: #2A5B7A;
 }
 
 /*
@@ -443,25 +441,28 @@ form input:not(:focus):not(:placeholder-shown):invalid {
   cursor: pointer;
 }
 .button.cta {
-  background-color: #E79B25;
-  color: #F7FCFF;
+  background-color: #ffb703;
+  color: #202020;
 }
 
 .reverseBlock {
-  background: #303030;
+  background: #202020;
   color: #F7FCFF;
+}
+.reverseBlock a, .reverseBlock a:visited {
+  color: #80B3DB;
 }
 
 .transitionDown {
   width: 60%;
-  border-top: 4vh solid #303030;
+  border-top: 4vh solid #202020;
   border-left: 17vw solid transparent;
   border-right: 17vw solid transparent;
 }
 
 .transitionUp {
   width: 60%;
-  border-bottom: 4vh solid #303030;
+  border-bottom: 4vh solid #202020;
   border-left: 17vw solid transparent;
   border-right: 17vw solid transparent;
 }
@@ -472,7 +473,7 @@ form input:not(:focus):not(:placeholder-shown):invalid {
   ----------------------------------------------------------------------------------------------------------------------
 */
 header {
-  background: #2D6284;
+  background: #2A5B7A;
   color: #F7FCFF;
   width: 100%;
   position: fixed;
@@ -513,23 +514,23 @@ header nav {
     cursor: pointer;
   }
   header nav.navAbout .navAbout {
-    background: #303030;
+    background: #202020;
     color: #F7FCFF;
   }
   header nav.navWork .navWork {
-    background: #303030;
+    background: #202020;
     color: #F7FCFF;
   }
   header nav.navSkillset .navSkillset {
-    background: #303030;
+    background: #202020;
     color: #F7FCFF;
   }
   header nav.navHobbies .navHobbies {
-    background: #303030;
+    background: #202020;
     color: #F7FCFF;
   }
   header nav.navContact .navContact {
-    background: #303030;
+    background: #202020;
     color: #F7FCFF;
   }
 }
@@ -541,7 +542,7 @@ header nav {
 */
 .intro {
   padding-top: 50px;
-  min-height: calc(100vh - 100px);
+  min-height: 100vh;
   display: flex;
   justify-content: space-around;
 }
@@ -645,12 +646,12 @@ header nav {
     grid-column: unset;
     grid-column-start: 2;
     padding-top: 0;
-    font-size: clamp(6.25rem, 0.825rem + 8.75vw, 8rem);
+    font-size: clamp(6.25rem, 0.825rem + 8.75vw, 7.75rem);
   }
 }
 @media only screen and (min-width:1312px) {
   .intro .skillset .headline {
-    font-size: clamp(8rem, 5.842rem + 2.632vw, 9rem);
+    font-size: clamp(8rem, 5.842rem + 2.632vw, 8.75rem);
   }
 }
 .intro .skillset .skills {
@@ -711,7 +712,7 @@ header nav {
 
 .jobPosition {
   background: #fff;
-  box-shadow: #303030 3px 3px 3px;
+  box-shadow: #202020 3px 3px 3px;
   border: 1px solid #ddd;
   width: 100%;
   padding: 1.5rem;
@@ -903,9 +904,9 @@ header nav {
   right: 5px;
 }
 .skillGraph .entity .rank div {
-  background: #2D6284;
+  background: #2A5B7A;
   height: 100%;
-  color: #303030;
+  color: #202020;
   display: flex;
   align-items: center;
   justify-content: end;
@@ -948,7 +949,7 @@ header nav {
   flex-direction: column;
   align-items: center;
   color: #F7FCFF;
-  min-height: 100vh;
+  min-height: 105vh;
 }
 .hobbies .content {
   margin: 50px 0;

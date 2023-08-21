@@ -21,14 +21,11 @@ body {
   font: 100% $bodyFont;
   color: $brandPrimaryTextColor;
   background: #1e4158;
+  letter-spacing: .75px;
 }
 
-a {
+a, a:visited {
   color:$brandLinkTextBlue;
-
-  &:visited{
-    color:$brandLinkTextBlue;
-  }
 }
 
 
@@ -87,13 +84,17 @@ form{
   }
   &.cta {
     background-color: $brandPrimaryCta;
-    color: $brandReverseTextColor;
+    color: $brandPrimaryTextColor;
   }
 }
 
 .reverseBlock {
   background: $brandPrimaryBlack;
   color: $brandReverseTextColor;
+
+  a, a:visited{
+    color:$brandLinkTextReverse;
+  }
 }
 
 .transitionDown {
@@ -207,7 +208,7 @@ header {
 
 .intro {
   padding-top: 50px;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh);
   display: flex;
   justify-content: space-around;
 
@@ -295,7 +296,7 @@ header {
 
     .headline {
       font-family: $headerFont;
-      font-size: clamp(3rem, -0.841rem + 17.073vw, 6.5rem);;
+      font-size: clamp(3rem, -0.841rem + 17.073vw, 6.5rem);
       text-align: center;
       display: block;
       font-weight: 700;
@@ -312,12 +313,12 @@ header {
         grid-column:unset;
         grid-column-start: 2;
         padding-top: 0;
-        font-size: clamp(6.25rem, 0.825rem + 8.75vw, 8rem);
+        font-size: clamp(6.25rem, 0.825rem + 8.75vw, 7.75rem);
         
       }
 
       @include mediaBreakpoint(desktop){
-        font-size: clamp(8rem, 5.842rem + 2.632vw, 9rem);
+        font-size: clamp(8rem, 5.842rem + 2.632vw, 8.75rem);
       }
 
     
@@ -659,7 +660,7 @@ header {
   flex-direction: column;
   align-items: center;
   color: $brandReverseTextColor;
-  min-height: 100vh;
+  min-height: 105vh;
 
   .content {
     margin: 50px 0;
