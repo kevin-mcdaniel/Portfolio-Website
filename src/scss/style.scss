@@ -136,15 +136,22 @@ header {
   .brand {
     font: 2em $headerFont;
     font-weight: bold;
+    padding-block:10px;
+    text-align: center;
+    width:100%;
+
+    @include mediaBreakpoint(tablet){
+      width:unset;
+      text-align: unset;
+    }
   }
 
   nav {
     display: none;
-    @include mediaBreakpoint(desktop) {
+    @include mediaBreakpoint(tablet) {
       display: flex;
       justify-content: space-between;
       font-size: 1.2em;
-      width: 20vw;
 
       div {
         display: flex;
@@ -200,19 +207,26 @@ header {
 
 .intro {
   padding-top: 50px;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
   display: flex;
   justify-content: space-around;
 
   @include mediaBreakpoint(tablet) {
-    padding-top: 0;
     align-items: center;
     flex-direction: column;
   }
 
+  @include mediaBreakpoint(desktop){
+    padding-top: 0;
+  }
+
+  
+
   .content {
     display: flex;
     flex-direction: column;
+    
+
     @include mediaBreakpoint(laptop) {
       width: calc(100% - 3rem);
       max-width: 1200px;
@@ -222,15 +236,92 @@ header {
   }
 
   .skillset {
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:50px;
+
+    @include mediaBreakpoint(tablet){
+      margin-top:0;
+      display:grid;
+      grid-template-columns: 200px 1fr;
+      
+      gap: 1rem 1rem;
+    }
+
+    @include mediaBreakpoint(tablet){
+      gap: 0 2rem; 
+    }
+
+    @include mediaBreakpoint(laptop){
+      grid-template-columns: 300px 1fr;
+    }
+    @include mediaBreakpoint(desktop){
+      grid-template-rows:1fr 1fr;
+      align-items: center;
+    }
+
+    img{
+      border-radius:50%;
+      height:250px;
+      width:250px;
+      
+      @include mediaBreakpoint(tablet){
+
+        height:200px;
+        width:200px;
+        grid-row:1 / 3;
+        align-self: start;
+      }
+
+      @include mediaBreakpoint(laptop){
+        align-self: center;
+        height:300px; 
+        width:300px;
+      }
+
+      @include mediaBreakpoint(desktop){
+        
+      }
+    }
+
+    p{
+      font-size: clamp(1rem, 0.451rem + 2.439vw, 1.5rem);
+      
+      @include mediaBreakpoint(laptop){
+        margin-bottom: 0;
+      }
+    }
+
     .headline {
       font-family: $headerFont;
-      font-size: 14vw;
-      @include mediaBreakpoint(desktop) {
-        font-size: 10vw;
-      }
+      font-size: clamp(3rem, -0.841rem + 17.073vw, 6.5rem);;
       text-align: center;
-      padding: $flexGutter 0;
       display: block;
+      font-weight: 700;
+      margin-top:0;
+      padding:0;
+     
+      @include mediaBreakpoint(tablet){
+        grid-column: 1 / 3;
+      }
+
+      
+
+      @include mediaBreakpoint(laptop) {
+        grid-column:unset;
+        grid-column-start: 2;
+        padding-top: 0;
+        font-size: clamp(6.25rem, 0.825rem + 8.75vw, 8rem);
+        
+      }
+
+      @include mediaBreakpoint(desktop){
+        font-size: clamp(8rem, 5.842rem + 2.632vw, 9rem);
+      }
+
+    
+
     }
 
     .skills {
@@ -342,6 +433,11 @@ header {
   }
 
   @include mediaBreakpoint(tablet) {
+    &.redstone{
+      h2{
+        background: url("../img/portfolio/RedstoneLogo.png");
+      }
+    }
     &.lithia {
       h2 {
         background: url("../img/portfolio/LithiaLogo.jpg");
